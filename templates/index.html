@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+    <title>חקלתות</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{%static 'assets/imgs/logo-1.png' %}">
+        </div>
+        <ul>
+            <li><a href="#" class="active">דף הבית</a></li>
+            <li><a href="#">מוצרים</a></li>
+            <li><a href="#">צור קשר</a></li>
+
+        </ul>
+
+    </nav>
+    <section class="sec1"></section>
+    <section class="sec2">
+        <link rel="prefetch" href="{% get_media_prefix %}{{products.0.image2}}" as="image">
+        <link rel="prefetch" href="{% get_media_prefix %}{{products.1.image2}}" as="image">
+        <link rel="prefetch" href="{% get_media_prefix %}{{products.2.image2}}" as="image">
+        <link rel="prefetch" href="{% get_media_prefix %}{{products.3.image2}}" as="image">
+        <link rel="prefetch" href="{% get_media_prefix %}{{products.4.image2}}" as="image">
+        <link rel="prefetch" href="{% get_media_prefix %}{{products.5.image2}}" as="image">
+        
+        <div class="row">
+            <div data-description="{{products.0.description}}" data-image2= "{% get_media_prefix %}{{products.0.image2}}" data-title="{{products.0.title}}" class="grid-item grid-item-{{products.0.id}}">
+                <img id="img1" src="{% get_media_prefix %}{{products.0.image1}}">
+            </div>
+            <div  data-description="{{products.1.description}}" data-image2= "{% get_media_prefix %}{{products.1.image2}}" data-title="{{products.1.title}}" class="grid-item grid-item-{{products.1.id}}">
+                <img id="img2" src="{% get_media_prefix %}{{products.1.image1}}">
+            </div>
+            <div  data-description="{{products.2.description}}" data-image2= "{% get_media_prefix %}{{products.2.image2}}" data-title="{{products.2.title}}" class="grid-item grid-item-{{products.2.id}}">
+                <img id="img3" src="{% get_media_prefix %}{{products.2.image1}}">
+            </div>
+        </div>
+        <div class="row">
+            <div  data-description="{{products.3.description}}" data-image2= "{% get_media_prefix %}{{products.3.image2}}" data-title="{{products.3.title}}" class="grid-item grid-item-{{products.3.id}}">
+                <img id="img4" src="{% get_media_prefix %}{{products.3.image1}}">
+            </div>
+            <div  data-description="{{products.4.description}}" data-image2= "{% get_media_prefix %}{{products.4.image2}}" data-title="{{products.4.title}}" class="grid-item grid-item-{{products.4.id}}">
+                <img id="img5" src="{% get_media_prefix %}{{products.4.image1}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="post-container">
+                <div class="post">
+                    <div class="header_post">
+                        <div class="post-image"></div>
+                    </div>
+
+                    <div class="body_post">
+                        <div class="post_content">
+
+                            <h1></h1>
+                            <p></p>
+
+                            <div class="container_infos">
+                                <div class="number">
+                                    <span class="minus">-</span>
+                                    <input type="text" value="1" />
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--
+                                <img src="data:image/png;base64,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"/>
+                                -->
+                                <div class="cart"></div>
+                                <!--
+                                <div class="postedBy">
+                                    <span>author</span>
+                                    John Doe
+                                </div>
+            
+                                <div class="container_tags">
+                                    <span>tags</span>
+                                    <div class="tags">
+                                        <ul>
+                                            <li>design</li>
+                                            <li>front end</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="cart">
+                <div class="cart-title">תות מלאך </div>
+                <div class="cart-description">תות מלאך הוא ללא ספק מוצר הדגל שלנו. ה"מלאך" הוא תות מתוק, גדול ועסיסי עם ריח משכר. טעם של פעם, באחריות!</div>
+            </div>
+            -->
+        </div>
+
+    </section>
+    <section class="sec3">
+        <div class="form-style-6">
+            <h1>Contact Us</h1>
+            <form>
+            <input type="text" name="field1" placeholder="השם המלא שלך" />
+            <input type="email" name="field2" placeholder="כתובת מייל לתקשורת נוחה" />
+            <input type="tel" name="field4" placeholder="לאיזה טלפון לחזור אליך?" />
+            <textarea name="field3" placeholder="איך נוכל לעזור"></textarea>
+            <input type="submit" value="Send" />
+            </form>
+            </div>
+        
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="{%static 'assets/js/script.js' %}"></script>
+</body>
+
+</html>
