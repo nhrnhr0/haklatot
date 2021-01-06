@@ -85,12 +85,14 @@ nav {
 
 .sec1 {
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   background: url(../imgs/bg1.jpg);
+  background-position: center bottom;
   background-size: cover;
 }
 
 .sec2 {
+  padding-top:100px;
   width: 100%;
   height: 100%;
   background: linear-gradient(0deg, #80ff8f, #40d451);
@@ -100,7 +102,8 @@ nav {
   padding-bottom: 50px;
   
   .row {
-    /*border:1px red solid;*/
+    
+    
     display: flex;
     
 
@@ -113,29 +116,35 @@ nav {
     }
 
 
-    .grid-item-3:hover img {
+    .grid-item-3:hover img,
+    .grid-item-3.active img{
       box-shadow: 0 0px 60px 0 rgb(255, 0, 0);
     }
 
-    .grid-item-2:hover img {
+    .grid-item-2:hover img,
+    .grid-item-2.active img {
       box-shadow: 0 0px 60px 0 rgb(46, 0, 59);
     }
 
-    .grid-item-1:hover img {
+    .grid-item-1:hover img,
+    .grid-item-1.active img{
       box-shadow: 0 0px 60px 0 rgb(46, 0, 59);
     }
 
-    .grid-item-4:hover img {
+    .grid-item-4:hover img,
+    .grid-item-4.active img{
       box-shadow: 0 0px 60px 0 rgb(255, 238, 0);
     }
 
-    .grid-item-5:hover img {
+    .grid-item-5:hover img,
+    .grid-item-5.active img{
       box-shadow: 0 0px 60px 0 rgb(255, 123, 0);
 
     }
 
     .grid-item {
       /*border: 1px black solid;*/
+      /*border:1px red solid;*/
       min-height: 250px;
       /*border: 1px solid red;*/
       flex: 1;
@@ -150,17 +159,30 @@ nav {
       
       &:hover img,
       &.active img{
+        /*
         width: 200px;
-        height: 200px;
+        height: 200px;*/
         /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.596);*/
       }
 
       img {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
-        height: 100px;
-        width: 100px;
+        height: 300px;
+        width: 300px;
         border-radius: 50%;
-
+        
+        @media only screen and (max-width: 1000px) {
+          height: 200px;
+          width: 200px;
+        }
+        @media only screen and (max-width: 820px) {
+          height: 150px;
+          width: 150px;
+        }
+        @media only screen and (max-width: 650px) {
+          height: 100px;
+          width: 100px;
+        }
       }
     }
 
