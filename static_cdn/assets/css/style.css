@@ -295,7 +295,7 @@ nav .logo img {
 nav ul {
   float: right;
   margin: 0;
-  padding-right: 130px;
+  /*padding-right: 130px;*/
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -332,8 +332,10 @@ nav ul li a.active {
     display: none;
   }
   nav a.icon {
-    float: right;
     display: block;
+    position: absolute;
+    top: 20px;
+    right: 50px;
   }
   nav.responsive {
     /*position: relative;*/
@@ -374,6 +376,7 @@ nav ul li a.active {
   text-decoration: none;
   width: 210px;
   color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1283,6 +1286,12 @@ a:hover {
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+  .sec2 .post-container .post .body_post .post_content .container_infos .number input {
+    width: 50px;
+  }
 }
 
 .sec2 .post-container .post .body_post .post_content .container_infos .cart {
