@@ -95,6 +95,14 @@
         <link rel="prefetch" href="{% get_media_prefix %}{{products.3.image2}}" as="image">
         <link rel="prefetch" href="{% get_media_prefix %}{{products.4.image2}}" as="image">
         <link rel="prefetch" href="{% get_media_prefix %}{{products.5.image2}}" as="image">
+        {% for product in products %}
+        <div name="{{product.id}}" data-description="{{product.description}}" data-image2="{% get_media_prefix %}{{product.image2}}"
+            data-size="{{product.size}}" data-price="{{product.price}}" data-title="{{product.title}}" class="grid-item grid-item-{{product.id}}">
+            <h1>{{product.title}}</h1>
+            <img id="img{{product.id}}" src="{% get_media_prefix %}{{product.image1}}">
+        </div>
+        {% endfor %}
+        <!--
         <div name="{{products.0.id}}" data-description="{{products.0.description}}" data-image2="{% get_media_prefix %}{{products.0.image2}}"
             data-size="{{products.0.size}}" data-price="{{products.0.price}}" data-title="{{products.0.title}}" class="grid-item grid-item-{{products.0.id}}">
             <h1>{{products.0.title}}</h1>
@@ -121,7 +129,7 @@
             <h1>{{products.4.title}}</h1>
             <img id="img{{products.4.id}}" src="{% get_media_prefix %}{{products.4.image1}}">
         </div>
-
+-->
         <div id="cart-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -209,6 +217,14 @@
                 </div>
                 <div class="modal-footer">
                 <div class="products-footer">
+                    {% for product in products %}
+                    <div name="{{product.id}}" data-description="{{product.description}}" data-image2="{% get_media_prefix %}{{product.image2}}"
+                        data-size="{{product.size}}" data-price="{{product.price}}" data-title="{{product.title}}" class="grid-item grid-item-{{product.id}}">
+                        <!--<h1>{{product.title}}</h1>-->
+                        <img id="img{{product.id}}" src="{% get_media_prefix %}{{product.image1}}">
+                    </div>
+                    {% endfor %}
+                    <!--
                     <div name="{{products.0.id}}" data-description="{{products.0.description}}" data-image2="{% get_media_prefix %}{{products.0.image2}}"
                     data-title="{{products.0.title}}" class="grid-item grid-item-{{products.0.id}}">
                     <img id="img1" src="{% get_media_prefix %}{{products.0.image1}}">
@@ -230,6 +246,7 @@
                     data-title="{{products.4.title}}" class="grid-item grid-item-{{products.4.id}}">
                     <img id="img5" src="{% get_media_prefix %}{{products.4.image1}}">
                 </div>
+            -->
                 </div>
                     <h3><button class="close close-btn">סגור</button></h3>
                 </div>
