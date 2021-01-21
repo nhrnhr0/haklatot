@@ -96,28 +96,28 @@
         <link rel="prefetch" href="{% get_media_prefix %}{{products.4.image2}}" as="image">
         <link rel="prefetch" href="{% get_media_prefix %}{{products.5.image2}}" as="image">
         <div name="{{products.0.id}}" data-description="{{products.0.description}}" data-image2="{% get_media_prefix %}{{products.0.image2}}"
-            data-price="300" data-title="{{products.0.title}}" class="grid-item grid-item-{{products.0.id}}">
+            data-size="{{products.0.size}}" data-price="{{products.0.price}}" data-title="{{products.0.title}}" class="grid-item grid-item-{{products.0.id}}">
             <h1>{{products.0.title}}</h1>
             <img id="img{{products.0.id}}" src="{% get_media_prefix %}{{products.0.image1}}">
         </div>
         <div name="{{products.1.id}}" data-description="{{products.1.description}}" data-image2="{% get_media_prefix %}{{products.1.image2}}"
-            data-price="12.5" data-title="{{products.1.title}}" class="grid-item grid-item-{{products.1.id}}">
+            data-size="{{products.1.size}}"data-price="{{products.1.price}}" data-title="{{products.1.title}}" class="grid-item grid-item-{{products.1.id}}">
             <h1>{{products.1.title}}</h1>
             <img id="img{{products.1.id}}" src="{% get_media_prefix %}{{products.1.image1}}">
         </div>
         <div name="{{products.2.id}}" data-description="{{products.2.description}}" data-image2="{% get_media_prefix %}{{products.2.image2}}"
-            data-price="6.5" data-title="{{products.2.title}}" class="grid-item grid-item-{{products.2.id}}">
+            data-size="{{products.2.size}}"data-price="{{products.2.price}}" data-title="{{products.2.title}}" class="grid-item grid-item-{{products.2.id}}">
             <h1>תפוח אדמה נשיקות - בלובל</h1>
             <img id="img{{products.2.id}}" src="{% get_media_prefix %}{{products.2.image1}}">
         </div>
 
         <div name="{{products.3.id}}" data-description="{{products.3.description}}" data-image2="{% get_media_prefix %}{{products.3.image2}}"
-            data-price="11.5" data-title="{{products.3.title}}" class="grid-item grid-item-{{products.3.id}}">
+            data-size="{{products.3.size}}"data-price="{{products.3.price}}" data-title="{{products.3.title}}" class="grid-item grid-item-{{products.3.id}}">
             <h1>{{products.3.title}}</h1>
             <img id="img{{products.3.id}}" src="{% get_media_prefix %}{{products.3.image1}}">
         </div>
         <div name="{{products.4.id}}" data-description="{{products.4.description}}" data-image2="{% get_media_prefix %}{{products.4.image2}}"
-            data-price="0.5" data-title="{{products.4.title}}" class="grid-item grid-item-{{products.4.id}}">
+            data-size="{{products.4.size}}"data-price="{{products.4.price}}" data-title="{{products.4.title}}" class="grid-item grid-item-{{products.4.id}}">
             <h1>{{products.4.title}}</h1>
             <img id="img{{products.4.id}}" src="{% get_media_prefix %}{{products.4.image1}}">
         </div>
@@ -177,7 +177,7 @@
                 <!-- light modal body -->
                 <div class="modal-body">
                     <div class="post-container">
-                        <div class="post">
+                        <div class="post" data-current="-1">
                             <div class="header_post">
                                 <div class="post-image"></div>
                             </div>
@@ -188,7 +188,7 @@
                                     <div class="container_infos">
                                         <div class="number">
                                             <span class="minus">-</span>
-                                            <input type="text" value="1" />
+                                            <input id="amount-input" type="text" value="1" />
                                             <span class="plus">+</span>
                                         </div>
                                         <!--

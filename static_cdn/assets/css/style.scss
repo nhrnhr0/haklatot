@@ -391,7 +391,18 @@ nav {
 
 .buy-cart {
   background: red;
-
+  &.spin {
+    animation: spin 1.5s ease-in-out forwards;
+  }
+  
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
   #lblCartCount {
     font-size: 16px;
     background: #0020ff;
@@ -1144,7 +1155,7 @@ a:hover {
     &.sum {
       background-color: #656565;
       color:white;
-      min-width: 10em;
+      min-width: 5em;
     }
   }
 }

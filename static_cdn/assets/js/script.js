@@ -45,14 +45,18 @@ $(document).ready(function() {
         var item2 = $(`.products-footer > div[name='${name}']`);
         
         
-        
+        debugger;
         /*$('.post').css('visibility', 'hidden');
         $('.post').css('opacity', '0');*/
+        $('.post')[0].dataset.current=name;
         $(".post-image").css("background-image", "url("+item.dataset.image2+")");
         $(".post_content h1").text(item.dataset.title);
         $(".post_content p").text(item.dataset.description);
         openProductsModal();
-        $('.grid-item').removeClass('active')
+        $('.grid-item').removeClass('active');
+        var amount = getProductAmount(name);
+        if(amount == 0) amount = 1;
+        $('#amount-input').val(amount)
         item2.addClass("active");
     });
 
@@ -124,7 +128,7 @@ function openCartModal(){
                 מחיר <span>${gridItem.dataset.price}</span><img class="money-icon" src="https://img.icons8.com/material/24/000000/shekel.png"/>
               </div>
               <div>
-                <span>${450}</span>g
+                <span>${gridItem.dataset.size}</span>
               </div>
             </div>
           </div>
@@ -139,7 +143,7 @@ function openCartModal(){
         </div>
         </td>
         <td>
-          <button class="del-btn"> <i class="fas fa-trash"></i> </button>
+          <button onclick="deleteProduct(${products[i].id})" class="del-btn"> <i class="fas fa-trash"></i> </button>
         </td>
       </tr>
     `
@@ -148,6 +152,22 @@ function openCartModal(){
   }
   updateCartTotalPrice();
   cartModal.style.display = 'block';
+}
+function deleteProduct(id) {
+  products = JSON.parse(myStorage.getItem('products'));
+  products.filter(function(ele) {
+    return ele.id != id;
+  });
+  myStorage.setItem('products', JSON.stringify(products));
+  
+}
+function getProductAmount(name) {
+  products = JSON.parse(myStorage.getItem('products'));
+  for(var i = 0; i<products.length; i++) {
+      if(products[i].id == name)
+        return products[i].amount;
+  }
+  return 0;
 }
 function updateCartTotalPrice() {
   var products = JSON.parse(myStorage.getItem('products'));
@@ -160,7 +180,6 @@ function updateCartTotalPrice() {
   $('#item-total-price').html(totalPrice.toString() + ' '.repeat(cellLen - totalPrice.toString().length) + '<img class="money-icon" src="https://img.icons8.com/material/24/000000/shekel.png"/>');
 }
 function itemamountchange(inp) {
-debugger;
   var id = inp.dataset.id;
   var val = parseInt(inp.value);
   addProductToCart(id, val);
@@ -219,10 +238,10 @@ function cartClick() {
   
 	setTimeout(()=>{ 
     button.classList.remove('clicked');
-    var product = $('.grid-item.active');
+    //var product = $('.grid-item.active');
+    var name = $('.post')[0].dataset.current;
     var amount = $('.container_infos .number > input')
-    console.log(product);
-    addProductToCart(product.attr('name'), amount.val());
+    addProductToCart(name, amount.val());
   },3000);
 }
 
@@ -244,10 +263,25 @@ function addProductToCart(name, amount) {
     products.push({'id': name, 'amount': amount});
   }
   // update cart counder, TODO: add shake animation:
-  $('.buy-cart .badge').text(products.length);
-  updateCartTotalPrice();
+  
   myStorage.setItem('products', JSON.stringify(products));
+  updateProductsCount();
+  updateCartTotalPrice();
 }
+
+function updateProductsCount() {
+  products = JSON.parse(`${myStorage.getItem('products')}`);
+  var counter = parseInt($('.buy-cart .badge').text());
+  if(counter != products.length) {
+    $('.buy-cart').addClass('spin');
+    setTimeout(()=>{ $('.buy-cart').removeClass('spin'),1000});
+    $('.buy-cart .badge').text(products.length);
+  }
+}
+
+window.addEventListener('load', (event) => {
+  updateProductsCount();
+});
 
 /* Lettering.JS 0.6.1 by Dave Rupert  - http://daverupert.com */
 (function($){function injector(t,splitter,klass,after){var a=t.text().split(splitter),inject='';if(a.length){$(a).each(function(i,item){inject+='<span class="'+klass+(i+1)+'">'+item+'</span>'+after});t.empty().append(inject)}}var methods={init:function(){return this.each(function(){injector($(this),'','char','')})},words:function(){return this.each(function(){injector($(this),' ','word',' ')})},lines:function(){return this.each(function(){var r="eefec303079ad17405c889e092e105b0";injector($(this).children("br").replaceWith(r).end(),r,'line','')})}};$.fn.lettering=function(method){if(method&&methods[method]){return methods[method].apply(this,[].slice.call(arguments,1))}else if(method==='letters'||!method){return methods.init.apply(this,[].slice.call(arguments,0))}$.error('Method '+method+' does not exist on jQuery.lettering');return this}})(jQuery);

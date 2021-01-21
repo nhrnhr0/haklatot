@@ -433,6 +433,33 @@ nav ul li a.active {
   background: red;
 }
 
+.buy-cart.spin {
+  -webkit-animation: spin 1.5s ease-in-out forwards;
+          animation: spin 1.5s ease-in-out forwards;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .buy-cart #lblCartCount {
   font-size: 16px;
   background: #0020ff;
@@ -1660,7 +1687,7 @@ a:hover {
 .cart-table .product-price-total.sum {
   background-color: #656565;
   color: white;
-  min-width: 10em;
+  min-width: 5em;
 }
 
 .money-icon {
