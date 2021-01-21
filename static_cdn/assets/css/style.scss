@@ -601,7 +601,7 @@ a:hover {
   
   .grid-item-1 {
     h1 {
-      @include rotated-text(16, 150deg, 65deg);
+      @include rotated-text(16, 130deg, 60deg);
       //@include rotated-text(14, 90deg, 45deg);
       color: rgb(255, 238, 0);
     }
