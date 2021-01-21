@@ -267,13 +267,14 @@ function cartClick() {
 	let button = this;
   button.classList.add('clicked');
 
+  var name = $('.post')[0].dataset.current;
+  var amount = $('.container_infos .number > input')
+  addProductToCart(name, amount.val());
   
 	setTimeout(()=>{ 
     button.classList.remove('clicked');
     //var product = $('.grid-item.active');
-    var name = $('.post')[0].dataset.current;
-    var amount = $('.container_infos .number > input')
-    addProductToCart(name, amount.val());
+    
   },3000);
 }
 
