@@ -173,8 +173,8 @@ body {
         min-height: auto ;
         
         img {
-          height: 85px;
-          width: 85px;
+          height: 90px;
+          width: 90px;
         }
       }
     }
@@ -601,7 +601,7 @@ a:hover {
   
   .grid-item-1 {
     h1 {
-      @include rotated-text(14, 150deg, 75deg);
+      @include rotated-text(16, 150deg, 65deg);
       //@include rotated-text(14, 90deg, 45deg);
       color: rgb(255, 238, 0);
     }
@@ -663,7 +663,7 @@ a:hover {
 
   .grid-item-6 {
     h1 {
-      @include rotated-text(8, 150deg, 75deg);
+      @include rotated-text(8, 90deg, 45deg);
       color: rgb(255, 115, 0);
     }
     &.active,
@@ -712,7 +712,7 @@ a:hover {
   }
   .grid-item-10 {
     h1 {
-      @include rotated-text(11, 150deg, 75deg);
+      @include rotated-text(11, 120deg, 60deg);
       color: rgb(255, 94, 0);
     }
     &.active,
@@ -724,7 +724,7 @@ a:hover {
   }
   .grid-item-11 {
     h1 {
-      @include rotated-text(9, 150deg, 75deg);
+      @include rotated-text(9, 90deg, 45deg);
       color: rgb(255, 187, 0);
     }
     &.active,
@@ -737,7 +737,7 @@ a:hover {
 
   .grid-item-12 {
     h1 {
-      @include rotated-text(16, 150deg, 75deg);
+      @include rotated-text(18, 130deg, 60deg);
       color: rgb(156, 4, 187);
     }
     &.active,
