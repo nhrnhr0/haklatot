@@ -659,6 +659,92 @@ a:hover {
     }
   }
 
+  .grid-item-6 {
+    h1 {
+      @include rotated-text(8, 150deg, 75deg);
+      color: rgb(255, 115, 0);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0 rgb(255, 115, 0);
+      }
+    }
+  }
+
+  .grid-item-7 {
+    h1 {
+      @include rotated-text(9, 150deg, 75deg);
+      color: rgb(255, 115, 0);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0 rgb(255, 115, 0);
+      }
+    }
+  }
+  .grid-item-8 {
+    h1 {
+      @include rotated-text(10, 150deg, 75deg);
+      color: rgb(153, 0, 255);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0  rgb(153, 0, 255);
+      }
+    }
+  }
+  .grid-item-9 {
+    h1 {
+      @include rotated-text(10, 150deg, 75deg);
+      color: rgb(255, 94, 0);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0  rgb(255, 94, 0);
+      }
+    }
+  }
+  .grid-item-10 {
+    h1 {
+      @include rotated-text(11, 150deg, 75deg);
+      color: rgb(255, 94, 0);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0  rgb(255, 94, 0);
+      }
+    }
+  }
+  .grid-item-11 {
+    h1 {
+      @include rotated-text(9, 150deg, 75deg);
+      color: rgb(255, 187, 0);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0  rgb(255, 187, 0);
+      }
+    }
+  }
+
+  .grid-item-12 {
+    h1 {
+      @include rotated-text(16, 150deg, 75deg);
+      color: rgb(156, 4, 187);
+    }
+    &.active,
+    &:hover {
+      img {
+        box-shadow: 0 0px 60px 0 rgb(156, 4, 187);
+      }
+    }
+  }
   .post-container {
     width: 100%;
     height: 100%;
