@@ -1,3 +1,7 @@
+
+var nav_sections = $('section');
+var main_nav = $('.navbar');
+
 $(window).on('scroll', function() {
 
     // black navbar functionality when scroll not on top
@@ -14,6 +18,25 @@ $(window).on('scroll', function() {
         // peek icon-bar
         $('.icon-bar > div').css('transform', 'translateX(0px)');
     }
+
+
+
+    var cur_pos = $(this).scrollTop() + 200;
+
+    nav_sections.each(function() {
+      var top = $(this).offset().top,
+        bottom = top + $(this).outerHeight();
+
+      if (cur_pos >= top && cur_pos <= bottom) {
+        if (cur_pos <= bottom) {
+          main_nav.find('li > a').removeClass('active');
+        }
+        main_nav.find('a[href="#' + $(this).attr('id') + '"]').addClass('active');
+      }
+      if (cur_pos < 300) {
+        $("nav li:first > a").addClass('active');
+      }
+    });
 });
 
 $(document).ready(function() {
@@ -97,14 +120,17 @@ window.addEventListener('click', outsideClick);
 
 // Open
 function openModal() {
+  closeModal();
   modal.style.display = 'block';
 }
 
 function openProductsModal() {
+    closeModal();
     productsModal.style.display = 'block';
 }
 
 function openCartModal(){
+  closeModal();
   var products = JSON.parse(myStorage.getItem('products'));
   $('.cart-table-body').empty();
   for(let i = 0; i < products.length; i++) {
@@ -114,7 +140,7 @@ function openCartModal(){
     console.log(productImage);
 
     var markup = `
-      <tr>
+      <tr name="cart-product-row-${products[i].id}">
         <td>
           <img class="product-small-image" src="${productImage.attr('src')}"/>
         </td>
@@ -143,7 +169,7 @@ function openCartModal(){
         </div>
         </td>
         <td>
-          <button onclick="deleteProduct(${products[i].id})" class="del-btn"> <i class="fas fa-trash"></i> </button>
+          <button onclick="delete_product(${products[i].id})" class="del-btn"> <i class="fas fa-trash"></i> </button>
         </td>
       </tr>
     `
@@ -153,12 +179,18 @@ function openCartModal(){
   updateCartTotalPrice();
   cartModal.style.display = 'block';
 }
-function deleteProduct(id) {
+function delete_product(id) {
+  debugger;
   products = JSON.parse(myStorage.getItem('products'));
-  products.filter(function(ele) {
-    return ele.id != id;
-  });
+  for(var i = 0; i < products.length; i++) {
+    if(parseInt(products[i].id) == id) {
+      var row=$(`[name=cart-product-row-${id}`);
+      row.remove();
+      products.splice(i, 1);
+    }
+  }
   myStorage.setItem('products', JSON.stringify(products));
+  updateCartTotalPrice();
   
 }
 function getProductAmount(name) {
@@ -281,6 +313,17 @@ function updateProductsCount() {
 
 window.addEventListener('load', (event) => {
   updateProductsCount();
+});
+$(document).ready(function () {
+  //initGoogleMapAutocomplete();
+});
+
+$(document).ready(function () {
+  // init google map api
+  var mapAutocomplete = new google.maps.places.Autocomplete(document.getElementById("addres_inp"));
+  mapAutocomplete.setComponentRestrictions({
+      'country': ['il']
+  });
 });
 
 /* Lettering.JS 0.6.1 by Dave Rupert  - http://daverupert.com */

@@ -296,6 +296,10 @@ nav {
       }
     }
   }
+  li.menu-active {
+    background: rgb(0 177 21);
+  }
+  
 }
 
 
@@ -378,6 +382,7 @@ nav {
 }
 
 
+
 .carrot {
 	background: #fcb900;
 }
@@ -452,9 +457,15 @@ a:hover {
   background-position: center bottom;
   background-size: cover;
 }
-
+.products-title {
+  background: #26d367;
+  margin: 0px;
+  text-align: center;
+  font-size: 2.8em;
+  padding-top:60px;
+}
 .sec2 {
-  padding-top: 100px;
+  padding-top: 40px;
   width: 100vw;
   height: 100%;
   background: linear-gradient(0deg, #80ff8f, #40d451);
@@ -765,26 +776,28 @@ a:hover {
       overflow: hidden;
       flex-direction: column;
       position: relative;
+      @media only screen and (min-width: 600px) {
 
-      &:hover {
-        .header_post {
-          margin-top: -20px;
-          height: 60%;
+        &:hover {
+          .header_post {
+            margin-top: -20px;
+            height: 60%;
+          }
+
+          .body_post {
+            height: 50%;
+          }
+
+          .post-image {
+            transform: translatey(-10px) translatex(-5px) scale(1.05);
+          }
+
+          /*
+                  img {
+                      transform: translatey(-10px) translatex(-5px) scale(1.05)
+            
+                  }*/
         }
-
-        .body_post {
-          height: 50%;
-        }
-
-        .post-image {
-          transform: translatey(-10px) translatex(-5px) scale(1.05);
-        }
-
-        /*
-                 img {
-                    transform: translatey(-10px) translatex(-5px) scale(1.05)
-          
-                 }*/
       }
 
       .header_post {
@@ -797,7 +810,9 @@ a:hover {
                 -moz-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
                 -ms-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
                 -o-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;*/
+
         transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+        
 
         /*img {
                   max-width: 100%;
@@ -823,6 +838,7 @@ a:hover {
         justify-content: center;
         align-items: center;
         transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+        
         overflow-y:auto;
         /*
                 -webkit-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
