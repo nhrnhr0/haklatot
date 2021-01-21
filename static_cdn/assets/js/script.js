@@ -112,7 +112,7 @@ function openCartModal(){
     var markup = `
       <tr>
         <td>
-          <img src="${productImage.attr('src')}"/>
+          <img class="product-small-image" src="${productImage.attr('src')}"/>
         </td>
         <td>
           <div>
@@ -121,7 +121,7 @@ function openCartModal(){
             </div>
             <div class="item-extras">
               <div class="price">
-                מחיר <span>${gridItem.dataset.price}</span>
+                מחיר <span>${gridItem.dataset.price}</span><img class="money-icon" src="https://img.icons8.com/material/24/000000/shekel.png"/>
               </div>
               <div>
                 <span>${450}</span>g
@@ -130,22 +130,51 @@ function openCartModal(){
           </div>
         </td>
         <td>
-        <input class="number-input" type="number" value="${products[i].amount}" />
+        <input class="number-input" data-id="${products[i].id}" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
           
         </td>
         <td>
-          <button class="del-btn"> <i class="fas fa-trash"></i> </button>
+        <div class="product-price-total" id="product-price-total-${products[i].id}">
+          ${products[i].amount * gridItem.dataset.price}
+        </div>
         </td>
         <td>
-        ${products[i].amount * gridItem.dataset.price}
+          <button class="del-btn"> <i class="fas fa-trash"></i> </button>
         </td>
       </tr>
     `
     
     $('.cart-table-body').append(markup)
   }
-
+  updateCartTotalPrice();
   cartModal.style.display = 'block';
+}
+function updateCartTotalPrice() {
+  var products = JSON.parse(myStorage.getItem('products'));
+  totalPrice = 0;
+  for(var i = 0; i< products.length;i++) {
+    totalPrice += getProductPrice(products[i].id) * products[i].amount;
+  }
+  var cellLen = 10;
+  $('#item-total-price').empty();
+  $('#item-total-price').html(totalPrice.toString() + ' '.repeat(cellLen - totalPrice.toString().length) + '<img class="money-icon" src="https://img.icons8.com/material/24/000000/shekel.png"/>');
+}
+function itemamountchange(inp) {
+debugger;
+  var id = inp.dataset.id;
+  var val = parseInt(inp.value);
+  addProductToCart(id, val);
+  var price = getProductPrice(id);
+  var totalTd = $(`#product-price-total-${id}`);
+  var newTotal = price * val;
+  totalTd.empty();
+  const cellLen = 5;
+  newTotal = newTotal.toString() + ' '.repeat(cellLen - newTotal.toString().length);
+  totalTd.append(newTotal);
+}
+function getProductPrice(id) {
+  var price = $(`div[name=${id}]`)[0].dataset.price;
+  return parseFloat(price);
 }
 
 // Close
@@ -216,64 +245,9 @@ function addProductToCart(name, amount) {
   }
   // update cart counder, TODO: add shake animation:
   $('.buy-cart .badge').text(products.length);
+  updateCartTotalPrice();
   myStorage.setItem('products', JSON.stringify(products));
 }
 
 /* Lettering.JS 0.6.1 by Dave Rupert  - http://daverupert.com */
 (function($){function injector(t,splitter,klass,after){var a=t.text().split(splitter),inject='';if(a.length){$(a).each(function(i,item){inject+='<span class="'+klass+(i+1)+'">'+item+'</span>'+after});t.empty().append(inject)}}var methods={init:function(){return this.each(function(){injector($(this),'','char','')})},words:function(){return this.each(function(){injector($(this),' ','word',' ')})},lines:function(){return this.each(function(){var r="eefec303079ad17405c889e092e105b0";injector($(this).children("br").replaceWith(r).end(),r,'line','')})}};$.fn.lettering=function(method){if(method&&methods[method]){return methods[method].apply(this,[].slice.call(arguments,1))}else if(method==='letters'||!method){return methods.init.apply(this,[].slice.call(arguments,0))}$.error('Method '+method+' does not exist on jQuery.lettering');return this}})(jQuery);
-
-// I think this is unused code
-function magnify(imgID, zoom) {
-    var img, glass, w, h, bw;
-    img = document.getElementById(imgID);
-    /*create magnifier glass:*/
-    glass = document.createElement("DIV");
-    glass.setAttribute("class", "img-magnifier-glass");
-    /*insert magnifier glass:*/
-    img.parentElement.insertBefore(glass, img);
-    /*set background properties for the magnifier glass:*/
-    glass.style.backgroundImage = "url('" + img.src + "')";
-    glass.style.backgroundRepeat = "no-repeat";
-    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-    bw = 3;
-    w = glass.offsetWidth / 2;
-    h = glass.offsetHeight / 2;
-    /*execute a function when someone moves the magnifier glass over the image:*/
-    glass.addEventListener("mousemove", moveMagnifier);
-    img.addEventListener("mousemove", moveMagnifier);
-    /*and also for touch screens:*/
-    glass.addEventListener("touchmove", moveMagnifier);
-    img.addEventListener("touchmove", moveMagnifier);
-    function moveMagnifier(e) {
-      var pos, x, y;
-      /*prevent any other actions that may occur when moving over the image*/
-      e.preventDefault();
-      /*get the cursor's x and y positions:*/
-      pos = getCursorPos(e);
-      x = pos.x;
-      y = pos.y;
-      /*prevent the magnifier glass from being positioned outside the image:*/
-      if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
-      if (x < w / zoom) {x = w / zoom;}
-      if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
-      if (y < h / zoom) {y = h / zoom;}
-      /*set the position of the magnifier glass:*/
-      glass.style.left = (x - w) + "px";
-      glass.style.top = (y - h) + "px";
-      /*display what the magnifier glass "sees":*/
-      glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
-    }
-    function getCursorPos(e) {
-      var a, x = 0, y = 0;
-      e = e || window.event;
-      /*get the x and y positions of the image:*/
-      a = img.getBoundingClientRect();
-      /*calculate the cursor's x and y coordinates, relative to the image:*/
-      x = e.pageX - a.left;
-      y = e.pageY - a.top;
-      /*consider any page scrolling:*/
-      x = x - window.pageXOffset;
-      y = y - window.pageYOffset;
-      return {x : x, y : y};
-    }
-  } 

@@ -1609,7 +1609,7 @@ a:hover {
   text-align: center;
 }
 
-.cart-table .cart-table-body img {
+.cart-table .cart-table-body .product-small-image {
   height: 50px;
   width: 50px;
 }
@@ -1651,6 +1651,21 @@ a:hover {
   width: 30px;
   height: 25px;
   text-align: center;
+}
+
+.cart-table .product-price-total {
+  text-align: center;
+}
+
+.cart-table .product-price-total.sum {
+  background-color: #656565;
+  color: white;
+  min-width: 10em;
+}
+
+.money-icon {
+  width: 15px;
+  height: 15px;
 }
 
 .img-magnifier-glass {
