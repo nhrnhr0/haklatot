@@ -15,12 +15,16 @@ class Product(models.Model):
 
     def render_image_circle(self, *args, **kwargs):
         ret = ''
-        ret += '<div style="width:250px;height:250px;background:url(%s) center;"></div>' % (settings.MEDIA_URL + self.image1.name) 
+        print(self.image1)
+        if self.image1 != None:
+            ret += '<div style="width:250px;height:250px;background:url(%s) center;"></div>' % (settings.MEDIA_URL + self.image1.name) 
         return mark_safe(ret)
     render_image_circle.short_description = ("image circle")
 
     def render_image_squere(self, *args, **kwargs):
         ret = ''
-        ret += '<div style="width:510px;height:200px;background:url(%s) center;"></div>' % (settings.MEDIA_URL + self.image2.name) 
+        print(self.image2)
+        if self.image2 != None:
+            ret += '<div style="width:510px;height:200px;background:url(%s) center;"></div>' % (settings.MEDIA_URL + self.image2.name) 
         return mark_safe(ret)
     render_image_squere.short_description = ("image squere")
