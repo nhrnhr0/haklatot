@@ -237,10 +237,12 @@ function closeModal() {
 
 // Close If Outside Click
 function outsideClick(e) {
+  console.log('outsize click')
+  console.log(e.target);
   if (e.target == modal) {
     modal.style.display = 'none';
   }
-  if(e.target == productsModal){
+  if (e.target == productsModal){
     productsModal.style.disply = 'none';
   }
 }
@@ -270,7 +272,7 @@ function cartClick() {
   var name = $('.post')[0].dataset.current;
   var amount = $('.container_infos .number > input')
   addProductToCart(name, amount.val());
-  
+
 	setTimeout(()=>{ 
     button.classList.remove('clicked');
     //var product = $('.grid-item.active');
