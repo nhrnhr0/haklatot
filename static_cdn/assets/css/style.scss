@@ -297,7 +297,7 @@ nav {
     }
   }
   li .menu-active {
-    background: rgb(0 177 21);
+    background: rgb(0, 177, 21);
   }
   
 }
@@ -458,11 +458,11 @@ a:hover {
   background-size: cover;
 }
 .products-title {
-  background: #26d367;
+  background: linear-gradient(0deg, #40d451, #80ff8f);
   margin: 0px;
   text-align: center;
   font-size: 2.8em;
-  padding-top:60px;
+  padding-top: 20px;
 }
 .sec2 {
   padding-top: 40px;
@@ -970,16 +970,84 @@ a:hover {
 
 }
 
+#exampleSlider {
+  position: relative;      /* recommended */
+  
+  & .MS-content {
+    white-space: nowrap;     /* required */
+    overflow: hidden;        /* required */
+    $perent: &;
+    //margin: 0 5%;            /* makes room for L/R arrows */
+  }
+  & .MS-content .item {
+    display: inline-block;   /* required */
+    width: 40%;              /* required * Determines number of visible slides */
+    position: relative;      /* required */
+    vertical-align: top;     /* required */
+    overflow: hidden;        /* required */
+    //height: 100%;            /* recommended */
+    height: 450px;
+    white-space: normal;     /* recommended */
+    
+    img {
+      height: 450px;
+      width: 100%;
+    }
+    &:hover {
+      overflow: visible;
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+#exampleSlider .MS-controls button {
+  position: absolute;      /* recommended */
+  top: 35px;
+}
+#exampleSlider .MS-controls .MS-left {
+  left: 10px;
+}
+#exampleSlider .MS-controls .MS-right {
+  right: 10px;
+}
 
 .sec3 {
   width: 100%;
   height: 100%;
   background-color: #ddd;
+  
+  .contact-us {
+    display: flex;
+    img {
+      height: 450px;
+      width: 450px;
+      object-fit: cover;
+    }
+    .who-us {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: right;
+      margin: 0 40px 0 40px;
+      h1 {
+        font-size: 2.7em;
+        color: #40d451;
+      }
+      
+      .content {
+        font-size: 1.2em;
+        
+      }
+    }
+  }
 
   .form-style-6 {
     font: 95% Arial, Helvetica, sans-serif;
     max-width: 400px;
-    margin: 10px auto;
+    //margin: 10px auto;
+    margin: 10px 0 0 50px;
     padding: 16px;
     background: #F7F7F7;
   }

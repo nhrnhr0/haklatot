@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" defer />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" defer>
     <title>חקלתות</title>
 </head>
 
@@ -257,16 +257,34 @@
 
     </section>
     <section class="sec3" id="contact">
-        <div class="form-style-6">
-            <h1>Contact Us</h1>
-            <form>
-                <input type="text" name="field1" placeholder="השם המלא שלך" />
-                <input type="text" id="addres_inp" name="location" placeholder="?מהיכן את/ה" />
-                <input type="email" name="field2" placeholder="כתובת מייל לתקשורת נוחה" />
-                <input type="tel" name="field4" placeholder="?לאיזה טלפון לחזור אליך" />
-                <textarea name="field3" placeholder="איך נוכל לעזור"></textarea>
-                <input type="submit" value="Send" />
-            </form>
+        <div id="exampleSlider">      <!-- Give wrapper ID to target with jQuery & CSS -->
+            <div class="MS-content">
+                <div class="item"> <img src="{%static 'assets/imgs/carusel/photo_113@21-01-2021_09-14-04.jpg' %}" /> </div>
+                <div class="item">  <img src="{%static 'assets/imgs/carusel/photo_115@21-01-2021_09-14-04.jpg' %}" /> </div>
+                <div class="item">  <img src="{%static 'assets/imgs/carusel/photo_136@21-01-2021_09-23-29.jpg' %}" /> </div>
+                <div class="item">  <img src="{%static 'assets/imgs/carusel/photo_140@21-01-2021_09-23-36.jpg' %}" /> </div>
+                <div class="item">  <img src="{%static 'assets/imgs/carusel/photo_141@21-01-2021_10-53-42.jpg' %}" /> </div>
+            </div>
+        </div>
+        <div class="contact-us">
+            <div class="form-style-6">
+                <h1>Contact Us</h1>
+                <form>
+                    <input type="text" name="field1" placeholder="השם המלא שלך" />
+                    <input type="text" id="addres_inp" name="location" placeholder="?מהיכן את/ה" />
+                    <input type="email" name="field2" placeholder="כתובת מייל לתקשורת נוחה" />
+                    <input type="tel" name="field4" placeholder="?לאיזה טלפון לחזור אליך" />
+                    <textarea name="field3" placeholder="איך נוכל לעזור"></textarea>
+                    <input type="submit" value="Send" />
+                </form>
+            </div>
+            <div>
+                <img src="{%static 'assets/imgs/photo_16@21-12-2020_18-30-08.jpg'%}"/>
+            </div>
+            <div class="who-us">
+                <h1>מי אנחנו </h1>
+                <div class="content">אנחנו חקלאים בדרום. אוהבי אדמה שנהנים מלתת את השירות הטוב ביותר לכם. תהנו להזמין באתר ואנחנו נאזור ונגיע לביתכם עם פירות וירקות טריים</div>
+            </div>
         </div>
 
     </section>
@@ -278,6 +296,7 @@
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLmOyl1lZ1oOovi60v6HPnp6bY-7A80is&language=he&libraries=places"
     defer></script>
+    <script src="{%static 'assets/js/multislider.min.js' %}"></script>
     <script src="{%static 'assets/js/script.js' %}"></script>
 </body>
 

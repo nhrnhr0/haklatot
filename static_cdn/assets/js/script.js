@@ -317,9 +317,6 @@ function updateProductsCount() {
 window.addEventListener('load', (event) => {
   updateProductsCount();
 });
-$(document).ready(function () {
-  //initGoogleMapAutocomplete();
-});
 
 $(document).ready(function () {
   // init google map api
@@ -327,6 +324,25 @@ $(document).ready(function () {
   mapAutocomplete.setComponentRestrictions({
       'country': ['il']
   });
+  $('#exampleSlider').multislider({
+    interval:2,
+    duration:5000,
+    slideAll:true,
+    continuous:true,
+    hoverPause:true
+});
+
+  $('#exampleSlider .MS-content .item').hover(function() {
+    $('#exampleSlider .MS-content').css('overflow', 'visible');
+    $(this).css('z-index', '10');
+    
+  },function (){
+    $('#exampleSlider .MS-content').css('overflow', 'hidden');
+    $(this).css('z-index', '0');
+  });
+  /*{
+    
+  });*/
 });
 
 /* Lettering.JS 0.6.1 by Dave Rupert  - http://daverupert.com */
