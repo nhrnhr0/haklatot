@@ -563,7 +563,7 @@ a:hover {
   width: 100vw;
   height: 70vh;
   background: url(../imgs/carusel/photo_136@21-01-2021_09-23-29.jpg);
-  background-position: center bottom;
+  /*background-position: center bottom;*/
   background-size: cover;
   position: relative;
   /*
