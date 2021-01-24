@@ -67,7 +67,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  display: none;
 }
 
 .modal .modal-body.modal-body-step-1 {
@@ -1895,7 +1894,7 @@ a:hover {
 
 .sec3 .contact-us img {
   height: 450px;
-  width: 250px;
+  width: 310px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -2297,6 +2296,10 @@ a:hover {
 .money-icon {
   width: 15px;
   height: 15px;
+}
+
+#cart-modal .modal-body-step-2 {
+  display: none;
 }
 
 .img-magnifier-glass {

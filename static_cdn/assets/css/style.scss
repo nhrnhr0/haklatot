@@ -71,7 +71,7 @@ body {
   display: flex;
   justify-content: center;
 
-  display: none;
+  
   &.modal-body-step-1 {
     display: block;
   }
@@ -188,6 +188,7 @@ body {
     background: linear-gradient(0deg, #80ff8f, #40d451);
     //background: var(--modal-color);
   }
+  
   .post {
     box-shadow: 1px 1px 15px black;
   }
@@ -1057,7 +1058,7 @@ a:hover {
     display: flex;
     img {
       height: 450px;
-      width: 250px;
+      width: 310px;
       object-fit: cover;
     }
     .who-us {
@@ -1376,6 +1377,12 @@ a:hover {
   height: 15px;
 }
 
+#cart-modal {
+  .modal-body-step-2 {
+    display: none;
+  }
+
+}
 
 .img-magnifier-glass {
   position: absolute;
