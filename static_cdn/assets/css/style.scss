@@ -444,6 +444,25 @@ nav {
 	background: #00aced;
 }
 
+.gift {
+  background:rgb(137, 0, 175);
+  button {
+    padding: 9px;
+    width: 53%;
+    height: 100%;
+    font-weight: bold;
+    background: -webkit-gradient(linear, left bottom, left top, from(#40d451), to(#80ff8f));
+    background: linear-gradient(
+0deg
+, #40d451, #80ff8f);
+    font-size: 0.8em;
+
+    &:hover {
+      color:white;
+    }
+  }
+}
+
 .whatsapp {
 	background: #2bff00;
 }
@@ -485,6 +504,19 @@ a i {
 	padding-left: 20px;
 	font-size: 30px !important;
 	animation: letszoom 3s linear alternate-reverse infinite;
+}
+.icn-spinner {
+  animation: spin-animation 0.5s forwards;
+  display: inline-block;
+}
+
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
 @keyframes letszoom {
@@ -1121,7 +1153,6 @@ a:hover {
         font-size: 2.7em;
         color: #40d451;
         text-shadow: -1.5px -1.5px 0 #000000, 1.5px -1.5px 0 #000000, -1.5px 1.5px 0 #000000, 1.5px 1.5px 0 #000000;
-        text-decoration: underline;
       }
       .content {
         h1{
@@ -1389,13 +1420,14 @@ a:hover {
 .cart-table {
   width: 100%;
   font-size: 1.2em;
-  min-height: 450px;
+  /*min-height: 450px;*/
   thead {
     background-color: #333;
     color:white;
     text-align: center;
   }
   .cart-table-body {
+    vertical-align: top;
     .product-small-image {
       height: 50px;
       width: 50px;
@@ -1426,11 +1458,18 @@ a:hover {
 
     .price {
     }
-
-    .number-input {
-      width: 30px;
-      height: 25px;
-      text-align: center;
+    .number {
+      .plus,
+      .minus {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+      .number-input {
+        width: 30px;
+        height: 25px;
+        text-align: center;
+      }
     }
   }
   .product-price-total {

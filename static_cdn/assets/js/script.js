@@ -53,7 +53,7 @@ $(document).ready(function() {
     });
     $('.icon-bar > div').on('focusout', function (e) {
         console.log('focusout');
-        $(e.currentTarget).css('transform', 'translateX(-160px)');
+        //$(e.currentTarget).css('transform', 'translateX(-160px)');
     });
     /*magnify("img1", 3);
     magnify("img2", 3);
@@ -67,8 +67,6 @@ $(document).ready(function() {
         var name = item.getAttribute('name');
         var item2 = $(`.products-footer > div[name='${name}']`);
         
-        
-        debugger;
         /*$('.post').css('visibility', 'hidden');
         $('.post').css('opacity', '0');*/
         $('.post')[0].dataset.current=name;
@@ -106,11 +104,14 @@ const modal = document.querySelector('#my-modal');
 const productsModal = document.querySelector('#products-modal');
 const cartModal = document.querySelector('#cart-modal');
 const modalBtn = document.querySelector('#modal-btn');
+const modalBtn2 = document.querySelector('#modal-btn2');
 const cartModalBtn = document.querySelector('.buy-cart');
 const closeBtns = document.querySelectorAll('.close');
 
 // Events
 modalBtn.addEventListener('click', openModal);
+modalBtn2.addEventListener('click', openModal);
+
 for (var i=0; i<closeBtns.length; i++) {
     closeBtns[i].addEventListener('click', closeModal);
 }
@@ -160,8 +161,12 @@ function openCartModal(){
           </div>
         </td>
         <td>
-        <input class="number-input" data-id="${products[i].id}"min="0" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
-          
+        
+        <div class="number">
+          <span class="minus">-</span>
+          <input class="number-input" data-id="${products[i].id}"min="0" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
+          <span class="plus">+</span>
+          </div>
         </td>
         <td>
         <div class="product-price-total" id="product-price-total-${products[i].id}">
@@ -177,10 +182,23 @@ function openCartModal(){
     $('.cart-table-body').append(markup)
   }
   updateCartTotalPrice();
+  $('.minus').click(function () {
+    var $input = $(this).parent().find('input');
+    var count = parseInt($input.val()) - 1;
+    count = count < 1 ? 1 : count;
+    $input.val(count);
+    $input.change();
+    return false;
+});
+$('.plus').click(function () {
+    var $input = $(this).parent().find('input');
+    $input.val(parseInt($input.val()) + 1);
+    $input.change();
+    return false;
+});
   cartModal.style.display = 'block';
 }
 function delete_product(id) {
-  debugger;
   products = JSON.parse(myStorage.getItem('products'));
   for(var i = 0; i < products.length; i++) {
     if(parseInt(products[i].id) == id) {
@@ -244,7 +262,10 @@ function outsideClick(e) {
     modal.style.display = 'none';
   }
   if (e.target == productsModal){
-    productsModal.style.disply = 'none';
+    productsModal.style.display = 'none';
+  }
+  if (e.target == cartModal) {
+    cartModal.style.display = 'none';
   }
 }
 
@@ -297,6 +318,10 @@ function addProductToCart(name, amount) {
   }
   if(!found) {
     products.push({'id': name, 'amount': amount});
+//    $('.buy-cart > img').addClass('icn-spinner');
+    setTimeout(function(){$('.buy-cart > img').addClass('icn-spinner');},250);
+    setTimeout(function(){$('.buy-cart > img').removeClass('icn-spinner');},1000);
+
   }
   // update cart counder, TODO: add shake animation:
   
@@ -358,10 +383,37 @@ $(document).ready(function () {
     $('.modal-body-step-1').css({'display': 'block'});
     $('.modal-body-step-2').css({'display': 'none'});
   });
+
+  setTimeout(popupsLoop, 5000);
   /*{
     
   });*/
 });
+/*
+function popupsLoop() {
+  console.log('popup loop');
+  moveables = $('.icon-bar > div.move');
+  for(var i = 0; i < moveables.length; i++) {
+    var xTrans = parseInt($(moveables[i]).css('transform').split(',')[4]);
+    if(xTrans == 0) {
+      animatePopup(moveables[i]);
+      showPopup(moveables[i]);
+      setTimeout(closePopup(moveables[i]),2500);
+    }
+  }
+}
+function animatePopup(pop) {
+  setTimeout(showPopup(pop), 500);
+  setTimeout(closePopup(pop), 2500);
+}
+function showPopup(pop) {
+  console.log('open', pop);
+  $(pop).css('transform', 'translateX(160px)');
+}
+function closePopup(pop) {
+  console.log('close', pop);
+  $(pop).css('transform', 'translateX(0px)');
+}*/
 
 /* Lettering.JS 0.6.1 by Dave Rupert  - http://daverupert.com */
 (function($){function injector(t,splitter,klass,after){var a=t.text().split(splitter),inject='';if(a.length){$(a).each(function(i,item){inject+='<span class="'+klass+(i+1)+'">'+item+'</span>'+after});t.empty().append(inject)}}var methods={init:function(){return this.each(function(){injector($(this),'','char','')})},words:function(){return this.each(function(){injector($(this),' ','word',' ')})},lines:function(){return this.each(function(){var r="eefec303079ad17405c889e092e105b0";injector($(this).children("br").replaceWith(r).end(),r,'line','')})}};$.fn.lettering=function(method){if(method&&methods[method]){return methods[method].apply(this,[].slice.call(arguments,1))}else if(method==='letters'||!method){return methods.init.apply(this,[].slice.call(arguments,0))}$.error('Method '+method+' does not exist on jQuery.lettering');return this}})(jQuery);

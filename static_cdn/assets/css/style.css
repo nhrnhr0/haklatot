@@ -486,6 +486,24 @@ nav li .menu-active {
   background: #00aced;
 }
 
+.gift {
+  background: #8900af;
+}
+
+.gift button {
+  padding: 9px;
+  width: 53%;
+  height: 100%;
+  font-weight: bold;
+  background: -webkit-gradient(linear, left bottom, left top, from(#40d451), to(#80ff8f));
+  background: linear-gradient(0deg, #40d451, #80ff8f);
+  font-size: 0.8em;
+}
+
+.gift button:hover {
+  color: white;
+}
+
 .whatsapp {
   background: #2bff00;
 }
@@ -543,6 +561,34 @@ a i {
   padding-left: 20px;
   font-size: 30px !important;
   animation: letszoom 3s linear alternate-reverse infinite;
+}
+
+.icn-spinner {
+  -webkit-animation: spin-animation 0.5s forwards;
+          animation: spin-animation 0.5s forwards;
+  display: inline-block;
+}
+
+@-webkit-keyframes spin-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes spin-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
 }
 
 @-webkit-keyframes letszoom {
@@ -1967,7 +2013,6 @@ a:hover {
   font-size: 2.7em;
   color: #40d451;
   text-shadow: -1.5px -1.5px 0 #000000, 1.5px -1.5px 0 #000000, -1.5px 1.5px 0 #000000, 1.5px 1.5px 0 #000000;
-  text-decoration: underline;
 }
 
 .sec3 .contact-us .who-us h1 span {
@@ -2305,13 +2350,17 @@ a:hover {
 .cart-table {
   width: 100%;
   font-size: 1.2em;
-  min-height: 450px;
+  /*min-height: 450px;*/
 }
 
 .cart-table thead {
   background-color: #333;
   color: white;
   text-align: center;
+}
+
+.cart-table .cart-table-body {
+  vertical-align: top;
 }
 
 .cart-table .cart-table-body .product-small-image {
@@ -2352,7 +2401,14 @@ a:hover {
   }
 }
 
-.cart-table .cart-table-body .number-input {
+.cart-table .cart-table-body .number .plus,
+.cart-table .cart-table-body .number .minus {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.cart-table .cart-table-body .number .number-input {
   width: 30px;
   height: 25px;
   text-align: center;
