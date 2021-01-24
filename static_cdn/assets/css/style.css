@@ -558,6 +558,28 @@ a:hover {
   background: url(../imgs/bg1.jpg);
   background-position: center bottom;
   background-size: cover;
+  position: relative;
+}
+
+.sec1 .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: right;
+  color: blue;
+  text-shadow: -1.5px -1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px 1.5px 0 #ffffff;
+  font-size: 1.4em;
+}
+
+.sec1 .flag {
+  bottom: 0px;
+  position: absolute;
+}
+
+.sec1 .flag img {
+  height: 100px;
 }
 
 .products-title {
