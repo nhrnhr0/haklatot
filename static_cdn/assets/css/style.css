@@ -235,6 +235,8 @@ body {
   /*border: 1px red solid;*/
   min-width: auto;
   min-height: auto;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
 }
 
 #products-modal .modal-footer .products-footer .grid-item img {
