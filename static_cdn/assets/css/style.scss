@@ -1050,7 +1050,8 @@ a:hover {
 
   .form-style-6 {
     font: 95% Arial, Helvetica, sans-serif;
-    max-width: 400px;
+    
+    min-width: 400px;
     //margin: 10px auto;
     margin: 10px 0 0 50px;
     padding: 16px;
