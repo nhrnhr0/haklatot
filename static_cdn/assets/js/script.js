@@ -190,6 +190,7 @@ function delete_product(id) {
     }
   }
   myStorage.setItem('products', JSON.stringify(products));
+  updateProductsCount();
   updateCartTotalPrice();
   
 }
