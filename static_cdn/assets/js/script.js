@@ -160,7 +160,7 @@ function openCartModal(){
           </div>
         </td>
         <td>
-        <input class="number-input" data-id="${products[i].id}" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
+        <input class="number-input" data-id="${products[i].id}"min="0" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
           
         </td>
         <td>
