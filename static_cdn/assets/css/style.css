@@ -219,6 +219,11 @@ body {
           box-shadow: 1px 1px 15px black;
 }
 
+#products-modal .modal-footer {
+  background: -webkit-gradient(linear, left bottom, left top, from(#40d451), to(#80ff8f));
+  background: linear-gradient(0deg, #40d451, #80ff8f);
+}
+
 #products-modal .modal-footer .products-footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -557,35 +562,34 @@ a:hover {
 .sec1 {
   width: 100vw;
   height: 70vh;
-  background: url(../imgs/bg1.jpg);
+  background: url(../imgs/carusel/photo_136@21-01-2021_09-23-29.jpg);
   background-position: center bottom;
   background-size: cover;
   position: relative;
-}
-
-.sec1 .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  text-align: center;
-  color: blue;
-  text-shadow: white -1.5px -1.5px 0px, white 1.5px -1.5px 0px, white -1.5px 1.5px 0px, white 1.5px 1.5px 0px;
-  font-size: 1.6em;
-}
-
-.sec1 .content .description {
-  font-size: 1em;
+  /*
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: blue;
+    text-shadow: rgb(255, 255, 255) -1.5px -1.5px 0px, rgb(255, 255, 255) 1.5px -1.5px 0px, rgb(255, 255, 255) -1.5px 1.5px 0px, rgb(255, 255, 255) 1.5px 1.5px 0px;
+    font-size: 1.6em;
+    .description {
+      font-size: 1em;
+    }
+  }*/
 }
 
 .sec1 .flag {
   bottom: 0px;
+  right: 0px;
   position: absolute;
 }
 
 .sec1 .flag img {
-  height: 200px;
+  height: 100px;
 }
 
 .products-title {
@@ -1948,6 +1952,27 @@ a:hover {
 .sec3 .contact-us .who-us h1 {
   font-size: 2.7em;
   color: #40d451;
+  text-decoration: underline;
+}
+
+.sec3 .contact-us .who-us .content {
+  text-align: center;
+}
+
+.sec3 .contact-us .who-us .content h1 {
+  text-decoration: none;
+}
+
+.sec3 .contact-us .who-us .content .title {
+  color: blue;
+  text-shadow: white -1.5px -1.5px 0px, white 1.5px -1.5px 0px, white -1.5px 1.5px 0px, white 1.5px 1.5px 0px;
+  font-size: 1.6em;
+}
+
+.sec3 .contact-us .who-us .content .description {
+  color: blue;
+  text-shadow: white -1.5px -1.5px 0px, white 1.5px -1.5px 0px, white -1.5px 1.5px 0px, white 1.5px 1.5px 0px;
+  font-size: 1em;
 }
 
 .sec3 .contact-us .who-us .content {

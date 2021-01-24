@@ -194,6 +194,7 @@ body {
   }
   
   .modal-footer {
+    background: linear-gradient(0deg, #40d451, #80ff8f);
     .products-footer {
       display: flex;
       flex-wrap: wrap;
@@ -486,10 +487,11 @@ a:hover {
 .sec1 {
   width: 100vw;
   height: 70vh;
-  background: url(../imgs/bg1.jpg);
+  background: url(../imgs/carusel/photo_136@21-01-2021_09-23-29.jpg);
   background-position: center bottom;
   background-size: cover;
   position: relative;
+  /*
   .content {
     position: absolute;
     top: 50%;
@@ -502,12 +504,13 @@ a:hover {
     .description {
       font-size: 1em;
     }
-  }
+  }*/
   .flag {
     bottom: 0px;
+    right: 0px;
     position: absolute;
     img {
-      height: 200px;
+      height: 100px;
     }
   }
 }
@@ -1093,7 +1096,26 @@ a:hover {
       h1 {
         font-size: 2.7em;
         color: #40d451;
+        text-decoration: underline;
       }
+      .content {
+        h1{
+          text-decoration: none;
+        }
+        
+        text-align: center;
+        .title {
+          color: blue;
+          text-shadow: rgb(255, 255, 255) -1.5px -1.5px 0px, rgb(255, 255, 255) 1.5px -1.5px 0px, rgb(255, 255, 255) -1.5px 1.5px 0px, rgb(255, 255, 255) 1.5px 1.5px 0px;
+          font-size: 1.6em;
+        }
+          .description {
+            color: blue;
+            text-shadow: rgb(255, 255, 255) -1.5px -1.5px 0px, rgb(255, 255, 255) 1.5px -1.5px 0px, rgb(255, 255, 255) -1.5px 1.5px 0px, rgb(255, 255, 255) 1.5px 1.5px 0px;
+            font-size: 1em;
+          }
+        }
+      
       
       .content {
         font-size: 1.2em;
