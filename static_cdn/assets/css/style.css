@@ -67,6 +67,16 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  display: none;
+}
+
+.modal .modal-body.modal-body-step-1 {
+  display: block;
+}
+
+.modal .modal-body.modal-body-step-2 .form-style-6 {
+  margin: 0;
+  min-width: initial;
 }
 
 @media only screen and (max-width: 600px) {
@@ -121,10 +131,37 @@ body {
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
 .modal .modal-footer .close-btn {
   background-color: red;
+}
+
+.modal .modal-footer .next-btn {
+  background-color: #4f52ff;
+  font-size: 30px;
+  color: #fff;
+}
+
+.modal .modal-footer .next-btn:hover {
+  color: black;
+}
+
+.modal .modal-footer .prev-btn {
+  background-color: #3d3d3d;
+  font-size: 30px;
+  color: #fff;
+}
+
+.modal .modal-footer .prev-btn:hover {
+  color: black;
 }
 
 .modal .close {
@@ -1890,7 +1927,7 @@ a:hover {
   font-size: 1.2em;
 }
 
-.sec3 .form-style-6 {
+.form-style-6 {
   font: 95% Arial, Helvetica, sans-serif;
   min-width: 400px;
   margin: 10px 0 0 50px;
@@ -1898,7 +1935,7 @@ a:hover {
   background: #F7F7F7;
 }
 
-.sec3 .form-style-6 h1 {
+.form-style-6 h1 {
   background: #43D1AF;
   padding: 20px 0;
   font-size: 140%;
@@ -1908,21 +1945,21 @@ a:hover {
   margin: -16px -16px 16px -16px;
 }
 
-.sec3 .form-style-6 input[type="text"],
-.sec3 .form-style-6 input[type="date"],
-.sec3 .form-style-6 input[type="datetime"],
-.sec3 .form-style-6 input[type="email"],
-.sec3 .form-style-6 input[type="number"],
-.sec3 .form-style-6 input[type="search"],
-.sec3 .form-style-6 input[type="time"],
-.sec3 .form-style-6 input[type="url"],
-.sec3 .form-style-6 input[type="tel"],
-.sec3 .form-style-6 textarea,
-.sec3 .form-style-6 select {
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 input[type="tel"],
+.form-style-6 textarea,
+.form-style-6 select {
   /*-webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;*/
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;*/
   -webkit-transition: all 0.30s ease-in-out;
   transition: all 0.30s ease-in-out;
   outline: none;
@@ -1930,8 +1967,8 @@ a:hover {
           box-sizing: border-box;
   text-align: right;
   /*
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;*/
   width: 100%;
   background: #fff;
   margin-bottom: 4%;
@@ -1941,30 +1978,30 @@ a:hover {
   font: 95% Arial, Helvetica, sans-serif;
 }
 
-.sec3 .form-style-6 input[type="text"]:focus,
-.sec3 .form-style-6 input[type="date"]:focus,
-.sec3 .form-style-6 input[type="datetime"]:focus,
-.sec3 .form-style-6 input[type="email"]:focus,
-.sec3 .form-style-6 input[type="number"]:focus,
-.sec3 .form-style-6 input[type="search"]:focus,
-.sec3 .form-style-6 input[type="time"]:focus,
-.sec3 .form-style-6 input[type="url"]:focus,
-.sec3 .form-style-6 input[type="tel"]:focus,
-.sec3 .form-style-6 textarea:focus,
-.sec3 .form-style-6 select:focus {
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 input[type="tel"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus {
   -webkit-box-shadow: 0 0 5px #43D1AF;
           box-shadow: 0 0 5px #43D1AF;
   padding: 3%;
   border: 1px solid #43D1AF;
 }
 
-.sec3 .form-style-6 input[type="submit"],
-.sec3 .form-style-6 input[type="button"] {
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   /*
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;*/
   width: 100%;
   padding: 3%;
   background: #43D1AF;
@@ -1975,8 +2012,8 @@ a:hover {
   color: #fff;
 }
 
-.sec3 .form-style-6 input[type="submit"]:hover,
-.sec3 .form-style-6 input[type="button"]:hover {
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover {
   background: #2EBC99;
 }
 
@@ -2194,6 +2231,7 @@ a:hover {
 .cart-table {
   width: 100%;
   font-size: 1.2em;
+  min-height: 450px;
 }
 
 .cart-table thead {

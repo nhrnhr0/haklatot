@@ -138,7 +138,7 @@
                     <h2>עגלת קניות</h2>
                     <span class="close">&times;</span>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body modal-body-step-1">
                     <table class="cart-table" dir="rtl">
                         <thead>
                             <tr>
@@ -172,8 +172,27 @@
                         </tfoot>
                     </table>
                 </div>
+                    <div class="check-out modal-body modal-body-step-2">
+                        <div class="form-style-6">
+                            <h1>פרטי הזמנה</h1>
+                            <form>
+                                <input type="text" name="field1" placeholder="השם המלא שלך" />
+                                <input type="text" id="addres_inp" name="location" placeholder="?מהיכן את/ה" />
+                                <input type="email" name="field2" placeholder="כתובת מייל לתקשורת נוחה" />
+                                <input type="tel" name="field4" placeholder="?לאיזה טלפון לחזור אליך" />
+                                <textarea name="field3" placeholder="הערות לגבי ההזמנה"></textarea>
+                                <input type="submit" value="Send" />
+                            </form>
+                        </div>
+
+                    </div>
+                
                 <div class="modal-footer">
                     <h3><button class="close close-btn">סגור</button></h3>
+                    <h3>
+                        <button class="next next-btn">הבא</button>
+                        <button class="prev prev-btn" disabled>הקודם</button>
+                    </h3>
                 </div>
             </div>
         </div>

@@ -330,7 +330,7 @@ $(document).ready(function () {
     slideAll:true,
     continuous:true,
     hoverPause:true
-});
+  });
 
   $('#exampleSlider .MS-content .item').hover(function() {
     $('#exampleSlider .MS-content').css('overflow', 'visible');
@@ -339,6 +339,23 @@ $(document).ready(function () {
   },function (){
     $('#exampleSlider .MS-content').css('overflow', 'hidden');
     $(this).css('z-index', '0');
+  });
+
+
+  // checkout form steps animation:
+  $('.next-btn').click(function() {
+    console.log('next click');
+    $('.prev-btn').attr("disabled", false);
+    $('.next-btn').text('שלח');
+    $('.modal-body-step-1').css({'display': 'none'});
+    $('.modal-body-step-2').css({'display': 'block'});
+  });
+  $('.prev-btn').click(function() {
+    console.log('prev click');
+    $('.prev-btn').attr("disabled", true);
+    $('.next-btn').text('הבא');
+    $('.modal-body-step-1').css({'display': 'block'});
+    $('.modal-body-step-2').css({'display': 'none'});
   });
   /*{
     
