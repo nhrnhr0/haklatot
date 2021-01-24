@@ -6,6 +6,7 @@
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -38,6 +39,11 @@ body {
   .modal .modal-content {
     width: 90%;
   }
+}
+
+.modal .modal-header h2 {
+  color: black;
+  text-shadow: -1.5px -1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px 1.5px 0 #ffffff;
 }
 
 .modal .modal-header h2,
@@ -76,6 +82,7 @@ body {
 .modal .modal-body.modal-body-step-2 .form-style-6 {
   margin: 0;
   min-width: initial;
+  overflow-y: auto;
 }
 
 @media only screen and (max-width: 600px) {
@@ -207,6 +214,11 @@ body {
 #modal-btn:hover {
   background: -webkit-gradient(linear, left top, left bottom, from(#80ff8f), to(#40d451));
   background: linear-gradient(180deg, #80ff8f, #40d451);
+}
+
+#products-modal .modal-header h2 {
+  color: black;
+  text-shadow: -1.5px -1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px 1.5px 0 #ffffff;
 }
 
 #products-modal .modal-body {
@@ -1913,7 +1925,7 @@ a:hover {
 }
 
 .sec3 {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background-color: #ddd;
 }
@@ -1952,6 +1964,7 @@ a:hover {
 .sec3 .contact-us .who-us h1 {
   font-size: 2.7em;
   color: #40d451;
+  text-shadow: -1.5px -1.5px 0 #000000, 1.5px -1.5px 0 #000000, -1.5px 1.5px 0 #000000, 1.5px 1.5px 0 #000000;
   text-decoration: underline;
 }
 
@@ -1972,7 +1985,7 @@ a:hover {
 .sec3 .contact-us .who-us .content .description {
   color: blue;
   text-shadow: white -1.5px -1.5px 0px, white 1.5px -1.5px 0px, white -1.5px 1.5px 0px, white 1.5px 1.5px 0px;
-  font-size: 1em;
+  font-size: 1.3em;
 }
 
 .sec3 .contact-us .who-us .content {
