@@ -496,7 +496,7 @@ nav li .menu-active {
   height: 100%;
   font-weight: bold;
   background: -webkit-gradient(linear, left bottom, left top, from(#40d451), to(#80ff8f));
-  background: linear-gradient(0deg, #40d451, #80ff8f);
+  background: #8900af;
   font-size: 0.8em;
 }
 
