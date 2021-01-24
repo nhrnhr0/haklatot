@@ -567,10 +567,14 @@ a:hover {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  text-align: right;
+  text-align: center;
   color: blue;
-  text-shadow: -1.5px -1.5px 0 , 1.5px -1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px 1.5px 0 #ffffff;
-  font-size: 1.4em;
+  text-shadow: white -1.5px -1.5px 0px, white 1.5px -1.5px 0px, white -1.5px 1.5px 0px, white 1.5px 1.5px 0px;
+  font-size: 1.6em;
+}
+
+.sec1 .content .description {
+  font-size: 1em;
 }
 
 .sec1 .flag {
@@ -579,7 +583,7 @@ a:hover {
 }
 
 .sec1 .flag img {
-  height: 100px;
+  height: 200px;
 }
 
 .products-title {
