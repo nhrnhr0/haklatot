@@ -40,6 +40,9 @@ $(window).on('scroll', function() {
 });
 
 $(document).ready(function() {
+    setTimeout(popupsLoop, 2000);
+    setInterval(popupsLoop,30000);
+
     $('.icon-bar > div').click((e)=>{
         var xTrans = parseInt($(e.currentTarget).css('transform').split(',')[4]);
         if(xTrans == 0 && e.currentTarget.classList.contains('move')) {
@@ -98,7 +101,42 @@ $(document).ready(function() {
     });
 });
 
+function popupsLoop() {
+  setTimeout(function() {
+    console.log('open popups');
+    var items = $('.icon-bar > div.move');
+    for(var i =0; i <items.length;i++) {
+      var index = i;
+      popWithTimeout(index);
+    }
+    
+  },2000);
+  setTimeout(function() {
+    console.log('close popups');
+    var items = $('.icon-bar > div.move');
+    for(var i =0; i <items.length;i++) {
+      var index = i;
+      closePopWithTimeout(index);
+    }
+  }, 5000)
 
+}
+
+function popWithTimeout(index) {
+  setTimeout(function() {
+    console.log(index);
+    $($('.icon-bar > div.move')[index]).css('transform', 'translateX(160px)');
+  },
+  500*index);
+}
+
+function closePopWithTimeout(index) {
+  setTimeout(function() {
+    console.log(index);
+    $($('.icon-bar > div.move')[index]).css('transform', 'translateX(0px)');
+  },
+  1000*index);
+}
 // modal functionality
 const modal = document.querySelector('#my-modal');
 const productsModal = document.querySelector('#products-modal');
@@ -321,9 +359,7 @@ function addProductToCart(name, amount) {
 //    $('.buy-cart > img').addClass('icn-spinner');
     setTimeout(function(){$('.buy-cart > img').addClass('icn-spinner');},250);
     setTimeout(function(){$('.buy-cart > img').removeClass('icn-spinner');},1000);
-
   }
-  // update cart counder, TODO: add shake animation:
   
   myStorage.setItem('products', JSON.stringify(products));
   updateProductsCount();
@@ -384,7 +420,6 @@ $(document).ready(function () {
     $('.modal-body-step-2').css({'display': 'none'});
   });
 
-  setTimeout(popupsLoop, 5000);
   /*{
     
   });*/
