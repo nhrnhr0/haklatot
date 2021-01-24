@@ -60,7 +60,9 @@ body {
 }
 
 .modal-header {
-  background: var(--modal-color);
+  background: linear-gradient(
+    0deg
+    , #40d451, #80ff8f);
   padding: 15px;
   color: #fff;
   border-top-left-radius: 5px;
@@ -123,7 +125,10 @@ body {
 }
 
 .modal-footer {
-  background: var(--modal-color);
+  
+  background: linear-gradient(
+    0deg
+    , #80ff8f, #40d451);
   color: #fff;
   text-align: center;
   border-bottom-left-radius: 5px;
