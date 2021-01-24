@@ -525,6 +525,7 @@ a:hover {
 }
 
 .products-title {
+  text-shadow: -1.5px -1.5px 0 #c7c7c7, 1.5px -1.5px 0 #c7c7c7, -1.5px 1.5px 0 #c7c7c7, 1.5px 1.5px 0 #c7c7c7;
   background: -webkit-gradient(linear, left bottom, left top, from(#40d451), to(#80ff8f));
   background: linear-gradient(0deg, #40d451, #80ff8f);
   margin: 0px;
@@ -1810,13 +1811,13 @@ a:hover {
   /* required */
   overflow: hidden;
   /* required */
-  height: 450px;
+  height: 250px;
   white-space: normal;
   /* recommended */
 }
 
 #exampleSlider .MS-content .item img {
-  height: 450px;
+  height: 250px;
   width: 100%;
 }
 
@@ -1857,7 +1858,7 @@ a:hover {
 
 .sec3 .contact-us img {
   height: 450px;
-  width: 450px;
+  width: 250px;
   -o-object-fit: cover;
      object-fit: cover;
 }

@@ -326,6 +326,10 @@ nav ul li a.active {
   background: #13a113;
 }
 
+nav li .menu-active {
+  background: #00b115;
+}
+
 @media screen and (max-width: 600px) {
   /*nav li:not(:first-child) {display: none;}*/
   nav li {

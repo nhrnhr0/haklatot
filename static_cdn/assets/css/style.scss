@@ -458,6 +458,11 @@ a:hover {
   background-size: cover;
 }
 .products-title {
+  text-shadow:
+  -1.5px -1.5px 0 rgb(199, 199, 199),  
+   1.5px -1.5px 0 rgb(199, 199, 199),  
+  -1.5px  1.5px 0 rgb(199, 199, 199),  
+   1.5px  1.5px 0 rgb(199, 199, 199);
   background: linear-gradient(0deg, #40d451, #80ff8f);
   margin: 0px;
   text-align: center;
@@ -986,11 +991,11 @@ a:hover {
     vertical-align: top;     /* required */
     overflow: hidden;        /* required */
     //height: 100%;            /* recommended */
-    height: 450px;
+    height: 250px;
     white-space: normal;     /* recommended */
     
     img {
-      height: 450px;
+      height: 250px;
       width: 100%;
     }
     &:hover {
@@ -1021,7 +1026,7 @@ a:hover {
     display: flex;
     img {
       height: 450px;
-      width: 450px;
+      width: 250px;
       object-fit: cover;
     }
     .who-us {
