@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.html import mark_safe
 
+
 # Create your models here.
 class Product(models.Model):
     title = models.CharField(max_length=200)
@@ -28,3 +29,21 @@ class Product(models.Model):
             ret += '<div style="width:510px;height:200px;background:url(%s) center;"></div>' % (settings.MEDIA_URL + self.image2.name) 
         return mark_safe(ret)
     render_image_squere.short_description = ("image squere")
+
+class Client(models.Model):
+    name = models.CharField(max_length=120, verbose_name="name")
+    address = models.CharField(max_length=120, verbose_name="address")
+    email = models.EmailField(max_length=120)
+    phone = models.CharField(max_length=30)
+    message = models.CharField(max_length=450)
+
+
+
+class OrderItems(models.Model):
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+    amount = models.IntegerField(verbose_name="amount")
+
+class Order(models.Model):
+    client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
+    orderItems = models.ManyToManyField(to=OrderItems)
+    date = models.DateField(auto_now=True)

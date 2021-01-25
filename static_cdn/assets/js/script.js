@@ -378,9 +378,48 @@ function updateProductsCount() {
 
 window.addEventListener('load', (event) => {
   updateProductsCount();
+
+  
 });
+function getFormData($form){
+  var unindexed_array = $form.serializeArray();
+  var indexed_array = {};
+
+  $.map(unindexed_array, function(n, i){
+      indexed_array[n['name']] = n['value'];
+  });
+
+  return indexed_array;
+}
 
 $(document).ready(function () {
+  $('.next-btn').on('click', function() {
+    console.log('next clicked');
+    debugger;
+    if ($(this).text() == 'שלח') {
+      console.log('need to send');
+      
+      console.log('submit cart form');
+      var client_data = getFormData($('#cartform'));
+      var products_data = JSON.parse(myStorage.getItem('products'));
+      client_data['products'] = products_data
+
+      $.ajax({
+        url: '/cart',
+        type: 'POST',
+        data: client_data,
+        success: function(json) {
+          window.location.reload();
+          console.log(json);
+        },
+
+      })
+
+      console.log(client_data);
+    }
+  });
+
+
   // init google map api
   var mapAutocomplete = new google.maps.places.Autocomplete(document.getElementById("addres_inp"));
   mapAutocomplete.setComponentRestrictions({

@@ -126,3 +126,14 @@ STATICFILES_DIRS = [
 
 MEDIA_URL= '/media/'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media_root/')
+
+from . import secrects
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'email-smtp.us-east-2.amazonaws.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = secrects.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD =  secrects.EMAIL_HOST_PASSWORD

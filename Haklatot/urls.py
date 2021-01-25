@@ -19,10 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 #from store import views
-from store.views import  home_view
+from store.views import  home_view, contact_post, cart_form
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name="home"),
+    path('contact-form', contact_post),
+    path('cart', cart_form)
 ]
 
 if settings.DEBUG:

@@ -187,7 +187,9 @@
                     <div class="check-out modal-body modal-body-step-2">
                         <div class="form-style-6">
                             <h1>פרטי הזמנה</h1>
-                            <form>
+                            <form id="cartform">
+                                
+                                {% csrf_token %}
                                 <input type="text" name="field1" placeholder="השם המלא שלך" />
                                 <input type="text" id="addres_inp" name="location" placeholder="?מהיכן את/ה" />
                                 <input type="email" name="field2" placeholder="כתובת מייל לתקשורת נוחה" />
@@ -304,13 +306,14 @@
         <div class="contact-us">
             <div class="form-style-6">
                 <h1> צור קשר </h1>
-                <form>
+                <form method="POST" action="/contact-form" id="contact-form">
+                    {% csrf_token %}
                     <input type="text" name="field1" placeholder="השם המלא שלך" />
                     <input type="text" id="addres_inp" name="location" placeholder="?מהיכן את/ה" />
                     <input type="email" name="field2" placeholder="כתובת מייל לתקשורת נוחה" />
                     <input type="tel" name="field4" placeholder="?לאיזה טלפון לחזור אליך" />
                     <textarea name="field3" placeholder="איך נוכל לעזור"></textarea>
-                    <input type="submit" value="שלח" />
+                    <input type="submit" name="contact-submit" value="שלח" />
                 </form>
             </div>
             <div>
@@ -336,6 +339,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLmOyl1lZ1oOovi60v6HPnp6bY-7A80is&language=he&libraries=places"
     defer></script>
     <script src="{%static 'assets/js/multislider.min.js' %}"></script>
+    <!-- script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>-->
     <script src="{%static 'assets/js/script.js' %}"></script>
 </body>
 
