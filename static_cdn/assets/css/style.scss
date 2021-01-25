@@ -140,17 +140,20 @@ body {
   flex-direction: row-reverse;
   .close-btn {
     background-color: red;
+    border-radius: 10px;
   }
   .next-btn {
     background-color: #4f52ff;
     font-size: 30px;
     color: #fff;
+    border-radius: 15px;
     &:hover {
       color:black;
     }
   }
   .prev-btn {
     background-color: #3d3d3d;
+    border-radius: 15px;
     font-size: 30px;
     color: #fff;
     &:hover {

@@ -150,12 +150,14 @@ body {
 
 .modal .modal-footer .close-btn {
   background-color: red;
+  border-radius: 10px;
 }
 
 .modal .modal-footer .next-btn {
   background-color: #4f52ff;
   font-size: 30px;
   color: #fff;
+  border-radius: 15px;
 }
 
 .modal .modal-footer .next-btn:hover {
@@ -164,6 +166,7 @@ body {
 
 .modal .modal-footer .prev-btn {
   background-color: #3d3d3d;
+  border-radius: 15px;
   font-size: 30px;
   color: #fff;
 }
