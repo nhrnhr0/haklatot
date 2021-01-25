@@ -2437,6 +2437,34 @@ a:hover {
   display: none;
 }
 
+#footer {
+  background: #343b40;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+#footer .copyright {
+  text-align: center;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+}
+
+#footer .credits a {
+  color: #60a142;
+}
+
+#footer .credits a:hover, #footer .credits a:active, #footer .credits a:focus {
+  color: #2dca98;
+  outline: none;
+  text-decoration: none;
+}
+
 .img-magnifier-glass {
   position: absolute;
   border: 3px solid #000;

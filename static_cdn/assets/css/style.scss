@@ -1495,6 +1495,33 @@ a:hover {
 
 }
 
+
+#footer {
+  background: #343b40;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 14px;
+
+  .copyright {
+      text-align: center;
+  }
+
+  .credits {
+      padding-top: 10px;
+      text-align: center;
+      font-size: 13px;
+      color: #ccc;
+      a {
+        color: #60a142;
+        &:hover, &:active, &:focus {
+          color: #2dca98;
+          outline: none;
+          text-decoration: none;
+        }
+      }
+  }
+}
+
 .img-magnifier-glass {
   position: absolute;
   border: 3px solid #000;
