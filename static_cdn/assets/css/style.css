@@ -1988,6 +1988,29 @@ a:hover {
   display: flex;
 }
 
+@media only screen and (max-width: 600px) {
+  .sec3 .contact-us {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .sec3 .contact-us .eyal-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .sec3 .contact-us img {
   height: 450px;
   width: 310px;
@@ -2011,6 +2034,12 @@ a:hover {
           align-items: center;
   text-align: right;
   margin: 0 40px 0 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .sec3 .contact-us .who-us {
+    margin: 0 10px 0 80px;
+  }
 }
 
 .sec3 .contact-us .who-us h1 {
@@ -2138,6 +2167,13 @@ a:hover {
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover {
   background: #2EBC99;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-style-6 {
+    min-width: 0;
+    margin: 0;
+  }
 }
 
 .number {

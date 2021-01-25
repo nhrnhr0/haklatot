@@ -1134,6 +1134,16 @@ a:hover {
   
   .contact-us {
     display: flex;
+    @media only screen and (max-width: 600px) {
+      flex-direction: column-reverse;
+    }
+    .eyal-image {
+      @media only screen and (max-width: 600px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
     img {
       height: 450px;
       width: 310px;
@@ -1146,6 +1156,9 @@ a:hover {
       align-items: center;
       text-align: right;
       margin: 0 40px 0 40px;
+      @media only screen and (max-width: 600px) {
+        margin: 0 10px 0 80px; 
+      }
       h1 {
         span {
           display:inline-block;
@@ -1272,7 +1285,12 @@ a:hover {
   background: #2EBC99;
 }
 
-
+@media only screen and (max-width: 600px) {
+  .form-style-6 {
+    min-width: 0;
+    margin:0;
+  }
+}
 .number {
   flex: 1;
   /*margin: 100px;*/
