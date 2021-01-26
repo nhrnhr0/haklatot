@@ -95,12 +95,6 @@ body {
   }
 }
 
-.modal .modal-body button {
-  min-width: 150px;
-  min-height: 150px;
-  font-size: 1.5em;
-}
-
 .modal .modal-body a {
   -webkit-appearance: button;
      -moz-appearance: button;
@@ -227,6 +221,12 @@ body {
 #modal-btn:hover {
   background: -webkit-gradient(linear, left top, left bottom, from(#80ff8f), to(#40d451));
   background: linear-gradient(180deg, #80ff8f, #40d451);
+}
+
+#my-modal .modal-body button {
+  min-width: 150px;
+  min-height: 150px;
+  font-size: 1.5em;
 }
 
 #products-modal .modal-header h2 {

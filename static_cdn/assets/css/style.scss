@@ -96,11 +96,7 @@ body {
   @media only screen and (max-width: 600px) {
     flex-direction: column;
   }
-  button {
-    min-width: 150px;
-    min-height: 150px;
-    font-size: 1.5em;
-  }
+
   a {
     appearance: button;
     text-decoration: none;
@@ -204,6 +200,15 @@ body {
   }
 }
 
+#my-modal {
+  .modal-body{
+    button {
+      min-width: 150px;
+      min-height: 150px;
+      font-size: 1.5em;
+    }
+  }
+}
 
 #products-modal {
   .modal-header {
