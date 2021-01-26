@@ -358,6 +358,17 @@
     <script src="{%static 'assets/js/multislider.min.js' %}"></script>
     <!-- script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>-->
     <script src="{%static 'assets/js/script.js' %}"></script>
+    <script type="text/javascript">
+        var morevagoOptions = morevagoOptions || {};
+        morevagoOptions.apiUrl = "https://app.morevago.com/api/proofs/list/camp_600efdcea0c67";
+        (function() {
+        var pz = document.createElement("script");
+        var script = document.getElementsByTagName("script")[0];
+        pz.type = "text/javascript"; pz.async = true; 
+        pz.src = "https://app.morevago.com/api/morevago-embeded/camp_600efdcea0c67/proof.js"; 
+        script.parentNode.insertBefore(pz, script); 
+        })();
+        </script>
 </body>
 
 </html>
