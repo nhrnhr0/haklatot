@@ -1948,6 +1948,12 @@ a:hover {
   /* recommended */
 }
 
+@media only screen and (max-width: 600px) {
+  #exampleSlider .MS-content .item {
+    width: 80%;
+  }
+}
+
 #exampleSlider .MS-content .item img {
   height: 250px;
   width: 100%;

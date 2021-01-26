@@ -64,6 +64,9 @@ $(document).ready(function() {
     magnify("img4", 3);
     magnify("img5", 3);*/
     $(".grid-item > h1").lettering();
+    $(`.products-footer > .grid-item`).click(function (e) {
+      $('#products-modal .modal-header')[0].scrollIntoView();
+    });
 
     $('.grid-item').click(function (e) {
         var item = e.currentTarget;
