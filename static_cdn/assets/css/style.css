@@ -121,8 +121,10 @@ body {
 }
 
 .modal .modal-body a img {
-  height: 125px;
-  width: 125px;
+  /*
+      height: 125px;
+      width: 125px;
+      */
 }
 
 .modal .modal-footer {
