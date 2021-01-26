@@ -95,6 +95,11 @@ body {
   }
 }
 
+.modal .modal-body button {
+  min-width: 150px;
+  min-height: 150px;
+}
+
 .modal .modal-body a {
   -webkit-appearance: button;
      -moz-appearance: button;

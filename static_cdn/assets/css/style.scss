@@ -96,7 +96,10 @@ body {
   @media only screen and (max-width: 600px) {
     flex-direction: column;
   }
-  
+  button {
+    min-width: 150px;
+    min-height: 150px;
+  }
   a {
     appearance: button;
     text-decoration: none;
@@ -121,6 +124,7 @@ body {
       height: 125px;
       width: 125px;
       */
+      
     }
   }
 }
