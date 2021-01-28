@@ -2442,6 +2442,12 @@ a:hover {
   vertical-align: top;
 }
 
+@media only screen and (max-width: 600px) {
+  .cart-table .cart-table-body span.minus, .cart-table .cart-table-body span.plus {
+    display: none;
+  }
+}
+
 .cart-table .cart-table-body .product-small-image {
   height: 50px;
   width: 50px;

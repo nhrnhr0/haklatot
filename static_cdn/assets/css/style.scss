@@ -1477,6 +1477,11 @@ a:hover {
   }
   .cart-table-body {
     vertical-align: top;
+    @media only screen and (max-width: 600px) {
+      span.minus, span.plus {
+        display: none;
+      }
+    }
     .product-small-image {
       height: 50px;
       width: 50px;
