@@ -1149,19 +1149,30 @@ a:hover {
   
   .contact-us {
     display: flex;
+    .form-style-6 {
+      flex: 1;
+    }
     flex-wrap: wrap-reverse;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 800px) {
       flex-direction: column-reverse;
     }
     .eyal-image {
-      @media only screen and (max-width: 600px) {
-        display: flex;
+      flex: 1;
+      display: flex;
+      flex-shrink: 2;
+      flex-grow: 0;
+      
+      @media only screen and (max-width: 800px) {
         justify-content: center;
         align-items: center;
+        img {
+          min-width: 310px;
+          width: 100%;
+        }
       }
     }
     img {
-      height: 450px;
+      height: 100%;
       width: 310px;
       object-fit: cover;
     }
@@ -1171,7 +1182,7 @@ a:hover {
       justify-content: center;
       align-items: center;
       text-align: right;
-      margin: 0 40px 0 40px;
+      margin: 0 60px 0 60px;
       @media only screen and (max-width: 600px) {
         margin: 0px 50px 50px 50px;
       }
@@ -1218,7 +1229,7 @@ a:hover {
   min-width: 400px;
   //max-height: 410px;
   //margin: 10px auto;
-  margin: 10px 0 0 50px;
+  //margin: 10px 0 0 50px;
   padding: 16px;
   background: #F7F7F7;
 }
@@ -1504,7 +1515,7 @@ a:hover {
         cursor: pointer;
       }
       .number-input {
-        width: 30px;
+        width: 50px;
         height: 25px;
         text-align: center;
       }

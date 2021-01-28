@@ -2004,7 +2004,13 @@ a:hover {
       flex-wrap: wrap-reverse;
 }
 
-@media only screen and (max-width: 600px) {
+.sec3 .contact-us .form-style-6 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+@media only screen and (max-width: 800px) {
   .sec3 .contact-us {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -2013,11 +2019,22 @@ a:hover {
   }
 }
 
-@media only screen and (max-width: 600px) {
+.sec3 .contact-us .eyal-image {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+@media only screen and (max-width: 800px) {
   .sec3 .contact-us .eyal-image {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -2025,10 +2042,14 @@ a:hover {
         -ms-flex-align: center;
             align-items: center;
   }
+  .sec3 .contact-us .eyal-image img {
+    min-width: 310px;
+    width: 100%;
+  }
 }
 
 .sec3 .contact-us img {
-  height: 450px;
+  height: 100%;
   width: 310px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -2049,7 +2070,7 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   text-align: right;
-  margin: 0 40px 0 40px;
+  margin: 0 60px 0 60px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -2097,7 +2118,6 @@ a:hover {
 .form-style-6 {
   font: 95% Arial, Helvetica, sans-serif;
   min-width: 400px;
-  margin: 10px 0 0 50px;
   padding: 16px;
   background: #F7F7F7;
 }
@@ -2468,7 +2488,7 @@ a:hover {
 }
 
 .cart-table .cart-table-body .number .number-input {
-  width: 30px;
+  width: 50px;
   height: 25px;
   text-align: center;
 }
