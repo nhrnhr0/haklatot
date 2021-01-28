@@ -2000,6 +2000,8 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
 }
 
 @media only screen and (max-width: 600px) {
@@ -2095,7 +2097,6 @@ a:hover {
 .form-style-6 {
   font: 95% Arial, Helvetica, sans-serif;
   min-width: 400px;
-  max-height: 410px;
   margin: 10px 0 0 50px;
   padding: 16px;
   background: #F7F7F7;

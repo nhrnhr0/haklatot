@@ -203,9 +203,9 @@ function openCartModal(){
         </td>
         <td>
         
-        <div class="number">
+        <div name="number-input-${products[i].id}" class="number">
           <span class="minus">-</span>
-          <input class="number-input" data-id="${products[i].id}"min="0" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
+          <input  class="number-input" data-id="${products[i].id}"min="0" name="item-cart-amount-${products[i].id}" onchange="itemamountchange(this)" type="number" value="${products[i].amount}" />
           <span class="plus">+</span>
           </div>
         </td>
@@ -221,22 +221,26 @@ function openCartModal(){
     `
     
     $('.cart-table-body').append(markup)
+
+    $(`[name=number-input-${products[i].id}] .minus`).click(function() {
+//    $('.minus').click(function () {
+      var $input = $(this).parent().find('input');
+      var count = parseInt($input.val()) - 1;
+      count = count < 1 ? 1 : count;
+      $input.val(count);
+      $input.change();
+      return false;
+  });
+  $(`[name=number-input-${products[i].id}] .plus`).click(function() {
+  //$('.plus').click(function () {
+      var $input = $(this).parent().find('input');
+      $input.val(parseInt($input.val()) + 1);
+      $input.change();
+      return false;
+  });
   }
   updateCartTotalPrice();
-  $('.minus').click(function () {
-    var $input = $(this).parent().find('input');
-    var count = parseInt($input.val()) - 1;
-    count = count < 1 ? 1 : count;
-    $input.val(count);
-    $input.change();
-    return false;
-});
-$('.plus').click(function () {
-    var $input = $(this).parent().find('input');
-    $input.val(parseInt($input.val()) + 1);
-    $input.change();
-    return false;
-});
+  
   cartModal.style.display = 'block';
 }
 function delete_product(id) {

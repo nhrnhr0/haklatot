@@ -1149,6 +1149,7 @@ a:hover {
   
   .contact-us {
     display: flex;
+    flex-wrap: wrap-reverse;
     @media only screen and (max-width: 600px) {
       flex-direction: column-reverse;
     }
@@ -1215,7 +1216,7 @@ a:hover {
   font: 95% Arial, Helvetica, sans-serif;
   
   min-width: 400px;
-  max-height: 410px;
+  //max-height: 410px;
   //margin: 10px auto;
   margin: 10px 0 0 50px;
   padding: 16px;
