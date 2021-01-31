@@ -1149,12 +1149,16 @@ a:hover {
   
   .contact-us {
     display: flex;
+    justify-content: center;
     .form-style-6 {
       flex: 1;
+      max-width: 450px;
+      
     }
     flex-wrap: wrap-reverse;
     @media only screen and (max-width: 800px) {
       flex-direction: column-reverse;
+      align-items: center;
     }
     .eyal-image {
       flex: 1;

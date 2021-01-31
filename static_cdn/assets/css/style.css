@@ -2000,6 +2000,9 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap-reverse;
       flex-wrap: wrap-reverse;
 }
@@ -2008,6 +2011,7 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  max-width: 450px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -2016,6 +2020,9 @@ a:hover {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
