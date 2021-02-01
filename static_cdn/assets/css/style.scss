@@ -218,6 +218,7 @@ body {
     }
   }
   .modal-body {
+    direction:rtl;
     background: linear-gradient(0deg, #80ff8f, #40d451);
     //background: var(--modal-color);
   }

@@ -234,6 +234,7 @@ body {
 }
 
 #products-modal .modal-body {
+  direction: rtl;
   background: -webkit-gradient(linear, left bottom, left top, from(#80ff8f), to(#40d451));
   background: linear-gradient(0deg, #80ff8f, #40d451);
 }
