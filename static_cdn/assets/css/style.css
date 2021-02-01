@@ -2525,6 +2525,15 @@ a:hover {
   min-width: 5em;
 }
 
+.cart-table tfoot .delivery-disclaimer {
+  font-size: 0.75em;
+}
+
+.cart-table tfoot .delivery-disclaimer img.money-icon {
+  width: 10px;
+  height: 10px;
+}
+
 .money-icon {
   width: 15px;
   height: 15px;

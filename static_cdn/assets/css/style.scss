@@ -1549,6 +1549,17 @@ a:hover {
       min-width: 5em;
     }
   }
+
+  tfoot {
+    .delivery-disclaimer {
+      font-size: 0.75em;
+      
+      img.money-icon {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
 }
 .money-icon {
   width: 15px;

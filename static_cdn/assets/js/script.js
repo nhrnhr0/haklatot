@@ -274,6 +274,13 @@ function updateCartTotalPrice() {
     totalPrice += getProductPrice(products[i].id) * products[i].amount;
   }
   var cellLen = 10;
+  debugger;
+  deliveryConst = 30;
+  if(totalPrice >= 100) {
+    deliveryConst = 0;
+  }
+  totalPrice += deliveryConst;
+  $('.delivery-cost').html(deliveryConst);
   $('#item-total-price').empty();
   $('#item-total-price').html(totalPrice.toString() + ' '.repeat(cellLen - totalPrice.toString().length) + '<img class="money-icon" src="https://img.icons8.com/material/24/000000/shekel.png"/>');
 }
