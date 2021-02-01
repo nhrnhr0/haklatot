@@ -79,6 +79,8 @@ $(document).ready(function() {
         $(".post-image").css("background-image", "url("+item.dataset.image2+")");
         $(".post_content h1").text(item.dataset.title);
         $(".post_content p").text(item.dataset.description);
+        debugger;
+        $(".post_content .product-size-lbl").html(`חבילה: ${item.dataset.size}`);
         openProductsModal();
         $('.grid-item').removeClass('active');
         var amount = getProductAmount(name);

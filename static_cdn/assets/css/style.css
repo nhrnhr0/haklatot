@@ -1826,6 +1826,7 @@ a:hover {
 
 .sec2 .post-container .post .body_post .post_content .container_infos {
   width: 100%;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1928,6 +1929,12 @@ a:hover {
 
 .sec2 .post-container .post .body_post .post_content .container_infos span {
   cursor: pointer;
+}
+
+.sec2 .post-container .post .body_post .post_content .container_infos .product-size-lbl {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 #exampleSlider {

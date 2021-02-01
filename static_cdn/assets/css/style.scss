@@ -998,6 +998,7 @@ a:hover {
 
           .container_infos {
             width: 100%;
+            position: relative;
             display: flex;
             /*justify-content: space-between;*/
             /*position: absolute;*/
@@ -1013,6 +1014,12 @@ a:hover {
 
             span {
               cursor: pointer;
+            }
+
+            .product-size-lbl {
+              position: absolute;
+              right: 0;
+              top: 0;
             }
 
 
