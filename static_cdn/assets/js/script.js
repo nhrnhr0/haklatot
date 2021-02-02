@@ -1,125 +1,119 @@
-
 var nav_sections = $('section');
 var main_nav = $('.navbar');
 
-$(window).on('scroll', function() {
+$(window).on('scroll', function () {
 
-    // black navbar functionality when scroll not on top
-    var scroll = $(window).scrollTop();
-    if(scroll) {
-        $('nav').addClass('block');
-        // hide icon-bar
-        $('.icon-bar > div').css('transform', 'translateX(-80px)');
-    }else{
-        $('nav').removeClass('block');
-    }
-    console.log(scroll);
-    if(scroll > 200) {
-        // peek icon-bar
-        $('.icon-bar > div').css('transform', 'translateX(0px)');
-    }
-
+  // black navbar functionality when scroll not on top
+  var scroll = $(window).scrollTop();
+  if (scroll) {
+    $('nav').addClass('block');
+    // hide icon-bar
+    $('.icon-bar > div').css('transform', 'translateX(-80px)');
+  } else {
+    $('nav').removeClass('block');
+  }
+  if (scroll > 200) {
+    // peek icon-bar
+    $('.icon-bar > div').css('transform', 'translateX(0px)');
+  }
 
 
-    var cur_pos = $(this).scrollTop() + 200;
 
-    nav_sections.each(function() {
-      var top = $(this).offset().top,
-        bottom = top + $(this).outerHeight();
+  var cur_pos = $(this).scrollTop() + 200;
 
-      if (cur_pos >= top && cur_pos <= bottom) {
-        if (cur_pos <= bottom) {
-          main_nav.find('li > a').removeClass('active');
-        }
-        main_nav.find('a[href="#' + $(this).attr('id') + '"]').addClass('active');
+  nav_sections.each(function () {
+    var top = $(this).offset().top,
+      bottom = top + $(this).outerHeight();
+
+    if (cur_pos >= top && cur_pos <= bottom) {
+      if (cur_pos <= bottom) {
+        main_nav.find('li > a').removeClass('active');
       }
-      if (cur_pos < 300) {
-        $("nav li:first > a").addClass('active');
-      }
-    });
+      main_nav.find('a[href="#' + $(this).attr('id') + '"]').addClass('active');
+    }
+    if (cur_pos < 300) {
+      $("nav li:first > a").addClass('active');
+    }
+  });
 });
 
-$(document).ready(function() {
-    setTimeout(popupsLoop, 2000);
-    setInterval(popupsLoop,30000);
+$(document).ready(function () {
+  setTimeout(popupsLoop, 2000);
+  setInterval(popupsLoop, 30000);
 
-    $('.icon-bar > div').click((e)=>{
-        var xTrans = parseInt($(e.currentTarget).css('transform').split(',')[4]);
-        if(xTrans == 0 && e.currentTarget.classList.contains('move')) {
-            $(e.currentTarget).css('transform', 'translateX(160px)');
-        }
-        else {
-            var all_elements = $('.icon-bar > div');
-            all_elements.css('transform', 'translateX(0px)');
-        }
-        
-    });
-    $('.icon-bar > div').on('focusout', function (e) {
-        console.log('focusout');
-        //$(e.currentTarget).css('transform', 'translateX(-160px)');
-    });
-    /*magnify("img1", 3);
-    magnify("img2", 3);
-    magnify("img3", 3);
-    magnify("img4", 3);
-    magnify("img5", 3);*/
-    $(".grid-item > h1").lettering();
-    $(`.products-footer > .grid-item`).click(function (e) {
-      $('#products-modal .modal-header')[0].scrollIntoView();
-    });
+  $('.icon-bar > div').click((e) => {
+    var xTrans = parseInt($(e.currentTarget).css('transform').split(',')[4]);
+    if (xTrans == 0 && e.currentTarget.classList.contains('move')) {
+      $(e.currentTarget).css('transform', 'translateX(160px)');
+    } else {
+      var all_elements = $('.icon-bar > div');
+      all_elements.css('transform', 'translateX(0px)');
+    }
 
-    $('.grid-item').click(function (e) {
-        var item = e.currentTarget;
-        var name = item.getAttribute('name');
-        var item2 = $(`.products-footer > div[name='${name}']`);
-        
-        /*$('.post').css('visibility', 'hidden');
-        $('.post').css('opacity', '0');*/
-        $('.post')[0].dataset.current=name;
-        $(".post-image").css("background-image", "url("+item.dataset.image2+")");
-        $(".post_content h1").text(item.dataset.title);
-        $(".post_content p").text(item.dataset.description);
-        debugger;
-        $(".post_content .product-size-lbl").html(`חבילה: ${item.dataset.size}`);
-        openProductsModal();
-        $('.grid-item').removeClass('active');
-        var amount = getProductAmount(name);
-        if(amount == 0) amount = 1;
-        $('#amount-input').val(amount)
-        item2.addClass("active");
-    });
+  });
+  $('.icon-bar > div').on('focusout', function (e) {
+    //$(e.currentTarget).css('transform', 'translateX(-160px)');
+  });
+  /*magnify("img1", 3);
+  magnify("img2", 3);
+  magnify("img3", 3);
+  magnify("img4", 3);
+  magnify("img5", 3);*/
+  $(".grid-item > h1").lettering();
+  $(`.products-footer > .grid-item`).click(function (e) {
+    $('#products-modal .modal-header')[0].scrollIntoView();
+  });
 
-    // amount number input field functionlity
-    $('.minus').click(function () {
-        var $input = $(this).parent().find('input');
-        var count = parseInt($input.val()) - 1;
-        count = count < 1 ? 1 : count;
-        $input.val(count);
-        $input.change();
-        return false;
-    });
-    $('.plus').click(function () {
-        var $input = $(this).parent().find('input');
-        $input.val(parseInt($input.val()) + 1);
-        $input.change();
-        return false;
-    });
+  $('.grid-item').click(function (e) {
+    var item = e.currentTarget;
+    var name = item.getAttribute('name');
+    var item2 = $(`.products-footer > div[name='${name}']`);
+
+    /*$('.post').css('visibility', 'hidden');
+    $('.post').css('opacity', '0');*/
+    $('.post')[0].dataset.current = name;
+    $(".post-image").css("background-image", "url(" + item.dataset.image2 + ")");
+    $(".post_content h1").text(item.dataset.title);
+    $(".post_content p").text(item.dataset.description);
+    debugger;
+    $(".post_content .product-size-lbl").html(`חבילה: ${item.dataset.size}`);
+    openProductsModal();
+    $('.grid-item').removeClass('active');
+    var amount = getProductAmount(name);
+    if (amount == 0) amount = 1;
+    $('#amount-input').val(amount)
+    item2.addClass("active");
+  });
+
+  // amount number input field functionlity
+  $('.minus').click(function () {
+    var $input = $(this).parent().find('input');
+    var count = parseInt($input.val()) - 1;
+    count = count < 1 ? 1 : count;
+    $input.val(count);
+    $input.change();
+    return false;
+  });
+  $('.plus').click(function () {
+    var $input = $(this).parent().find('input');
+    $input.val(parseInt($input.val()) + 1);
+    $input.change();
+    return false;
+  });
 });
 
 function popupsLoop() {
-  setTimeout(function() {
-    console.log('open popups');
+  setTimeout(function () {
     var items = $('.icon-bar > div.move');
-    for(var i =0; i <items.length;i++) {
+    for (var i = 0; i < items.length; i++) {
       var index = i;
       popWithTimeout(index);
     }
-    
-  },2000);
-  setTimeout(function() {
-    console.log('close popups');
+
+  }, 2000);
+  setTimeout(function () {
     var items = $('.icon-bar > div.move');
-    for(var i =0; i <items.length;i++) {
+    for (var i = 0; i < items.length; i++) {
       var index = i;
       closePopWithTimeout(index);
     }
@@ -128,19 +122,17 @@ function popupsLoop() {
 }
 
 function popWithTimeout(index) {
-  setTimeout(function() {
-    console.log(index);
-    $($('.icon-bar > div.move')[index]).css('transform', 'translateX(160px)');
-  },
-  500*index);
+  setTimeout(function () {
+      $($('.icon-bar > div.move')[index]).css('transform', 'translateX(160px)');
+    },
+    500 * index);
 }
 
 function closePopWithTimeout(index) {
-  setTimeout(function() {
-    console.log(index);
-    $($('.icon-bar > div.move')[index]).css('transform', 'translateX(0px)');
-  },
-  1000*index);
+  setTimeout(function () {
+      $($('.icon-bar > div.move')[index]).css('transform', 'translateX(0px)');
+    },
+    1000 * index);
 }
 // modal functionality
 const modal = document.querySelector('#my-modal');
@@ -155,8 +147,8 @@ const closeBtns = document.querySelectorAll('.close');
 modalBtn.addEventListener('click', openModal);
 modalBtn2.addEventListener('click', openModal);
 
-for (var i=0; i<closeBtns.length; i++) {
-    closeBtns[i].addEventListener('click', closeModal);
+for (var i = 0; i < closeBtns.length; i++) {
+  closeBtns[i].addEventListener('click', closeModal);
 }
 cartModalBtn.addEventListener('click', openCartModal);
 
@@ -169,19 +161,17 @@ function openModal() {
 }
 
 function openProductsModal() {
-    closeModal();
-    productsModal.style.display = 'block';
+  closeModal();
+  productsModal.style.display = 'block';
 }
 
-function openCartModal(){
+function openCartModal() {
   closeModal();
   var products = JSON.parse(myStorage.getItem('products'));
   $('.cart-table-body').empty();
-  for(let i = 0; i < products.length; i++) {
+  for (let i = 0; i < products.length; i++) {
     var gridItem = $(`div[name=${products[i].id}]`)[0];
     var productImage = $(`#img${products[i].id}`);
-    console.log(gridItem);
-    console.log(productImage);
 
     var markup = `
       <tr name="cart-product-row-${products[i].id}">
@@ -221,35 +211,36 @@ function openCartModal(){
         </td>
       </tr>
     `
-    
+
     $('.cart-table-body').append(markup)
 
-    $(`[name=number-input-${products[i].id}] .minus`).click(function() {
-//    $('.minus').click(function () {
+    $(`[name=number-input-${products[i].id}] .minus`).click(function () {
+      //    $('.minus').click(function () {
       var $input = $(this).parent().find('input');
       var count = parseInt($input.val()) - 1;
       count = count < 1 ? 1 : count;
       $input.val(count);
       $input.change();
       return false;
-  });
-  $(`[name=number-input-${products[i].id}] .plus`).click(function() {
-  //$('.plus').click(function () {
+    });
+    $(`[name=number-input-${products[i].id}] .plus`).click(function () {
+      //$('.plus').click(function () {
       var $input = $(this).parent().find('input');
       $input.val(parseInt($input.val()) + 1);
       $input.change();
       return false;
-  });
+    });
   }
   updateCartTotalPrice();
-  
+
   cartModal.style.display = 'block';
 }
+
 function delete_product(id) {
   products = JSON.parse(myStorage.getItem('products'));
-  for(var i = 0; i < products.length; i++) {
-    if(parseInt(products[i].id) == id) {
-      var row=$(`[name=cart-product-row-${id}`);
+  for (var i = 0; i < products.length; i++) {
+    if (parseInt(products[i].id) == id) {
+      var row = $(`[name=cart-product-row-${id}`);
       row.remove();
       products.splice(i, 1);
     }
@@ -257,26 +248,54 @@ function delete_product(id) {
   myStorage.setItem('products', JSON.stringify(products));
   updateProductsCount();
   updateCartTotalPrice();
-  
+
 }
+
 function getProductAmount(name) {
   products = JSON.parse(myStorage.getItem('products'));
-  for(var i = 0; i<products.length; i++) {
-      if(products[i].id == name)
-        return products[i].amount;
+  for (var i = 0; i < products.length; i++) {
+    if (products[i].id == name)
+      return products[i].amount;
   }
   return 0;
 }
+function applyDiscounts(discount, products) {
+  //TODO
+
+}
+function knapsack(products) {
+  discounts = getDiscounts();
+  debugger;
+  while(true) {
+    var found = false;
+    for(var i = 0; i < discounts.length; i++) {
+      newProducts = applyDiscounts(discounts[i], products);
+      if(newProducts != null) {
+        var bestOption = max(knapsack(newProducts), knapsack(products));
+
+        return bestOption;
+      }
+    }
+
+  }
+}
+
+function calculateDiscounts(products, totalPrice) {
+  
+  knapsack(products);
+}
+
 function updateCartTotalPrice() {
   var products = JSON.parse(myStorage.getItem('products'));
   totalPrice = 0;
-  for(var i = 0; i< products.length;i++) {
+  for (var i = 0; i < products.length; i++) {
     totalPrice += getProductPrice(products[i].id) * products[i].amount;
   }
   var cellLen = 10;
   debugger;
+  calculateDiscounts(products, totalPrice);
   deliveryConst = 30;
-  if(totalPrice >= 100) {
+  if (totalPrice >= 100) {
     deliveryConst = 0;
   }
   totalPrice += deliveryConst;
@@ -284,6 +303,7 @@ function updateCartTotalPrice() {
   $('#item-total-price').empty();
   $('#item-total-price').html(totalPrice.toString() + ' '.repeat(cellLen - totalPrice.toString().length) + '<img class="money-icon" src="https://img.icons8.com/material/24/000000/shekel.png"/>');
 }
+
 function itemamountchange(inp) {
   var id = inp.dataset.id;
   var val = parseInt(inp.value);
@@ -296,6 +316,7 @@ function itemamountchange(inp) {
   newTotal = newTotal.toString() + ' '.repeat(cellLen - newTotal.toString().length);
   totalTd.append(newTotal);
 }
+
 function getProductPrice(id) {
   var price = $(`div[name=${id}]`)[0].dataset.price;
   return parseFloat(price);
@@ -310,12 +331,10 @@ function closeModal() {
 
 // Close If Outside Click
 function outsideClick(e) {
-  console.log('outsize click')
-  console.log(e.target);
   if (e.target == modal) {
     modal.style.display = 'none';
   }
-  if (e.target == productsModal){
+  if (e.target == productsModal) {
     productsModal.style.display = 'none';
   }
   if (e.target == cartModal) {
@@ -338,45 +357,52 @@ function openNavbar() {
 const cartButtons = document.querySelectorAll('.cart-button');
 
 cartButtons.forEach(button => {
-	button.addEventListener('click', cartClick);
+  button.addEventListener('click', cartClick);
 });
 
 function cartClick() {
-	let button = this;
+  let button = this;
   button.classList.add('clicked');
 
   var name = $('.post')[0].dataset.current;
   var amount = $('.container_infos .number > input')
   addProductToCart(name, amount.val());
 
-	setTimeout(()=>{ 
+  setTimeout(() => {
     button.classList.remove('clicked');
     //var product = $('.grid-item.active');
-    
-  },3000);
+
+  }, 3000);
 }
 
 myStorage = window.sessionStorage;
 
 function addProductToCart(name, amount) {
   products = [];
-  if(myStorage.getItem('products') != undefined){
+  if (myStorage.getItem('products') != undefined) {
     products = JSON.parse(`${myStorage.getItem('products')}`);
   }
   let found = false;
-  for(let i = 0; i< products.length; i++) {
-    if(products[i].id == name) {
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id == name) {
       found = true;
       products[i].amount = amount;
     }
   }
-  if(!found) {
-    products.push({'id': name, 'amount': amount});
-//    $('.buy-cart > img').addClass('icn-spinner');
-    setTimeout(function(){$('.buy-cart > img').addClass('icn-spinner');},250);
-    setTimeout(function(){$('.buy-cart > img').removeClass('icn-spinner');},1000);
+  if (!found) {
+    products.push({
+      'id': name,
+      'amount': amount
+    });
+    //    $('.buy-cart > img').addClass('icn-spinner');
+    setTimeout(function () {
+      $('.buy-cart > img').addClass('icn-spinner');
+    }, 250);
+    setTimeout(function () {
+      $('.buy-cart > img').removeClass('icn-spinner');
+    }, 1000);
   }
-  
+
   myStorage.setItem('products', JSON.stringify(products));
   updateProductsCount();
   updateCartTotalPrice();
@@ -385,37 +411,58 @@ function addProductToCart(name, amount) {
 function updateProductsCount() {
   products = JSON.parse(`${myStorage.getItem('products')}`);
   var counter = parseInt($('.buy-cart .badge').text());
-  if(counter != products.length) {
+  if (counter != products.length) {
     $('.buy-cart').addClass('spin');
-    setTimeout(()=>{ $('.buy-cart').removeClass('spin'),1000});
+    setTimeout(() => {
+      $('.buy-cart').removeClass('spin'), 1000
+    });
     $('.buy-cart .badge').text(products.length);
   }
 }
 
+function getDiscounts() {
+  console.log('getDiscounts');
+  const storeId = 'haklatotDiscounts'
+  var discounts = sessionStorage.getItem(storeId);
+  if (discounts)
+    return JSON.parse(discounts)
+  else {
+    $.ajax({
+      url: '/api/discounts',
+      type: 'GET',
+      success: function (json) {
+        console.log(json);
+        sessionStorage.setItem(storeId, JSON.stringify(json));
+      },
+
+    })
+    return null;
+  }
+}
+
 window.addEventListener('load', (event) => {
+  getDiscounts()
   updateProductsCount();
 
-  
+
+
 });
-function getFormData($form){
+
+function getFormData($form) {
   var unindexed_array = $form.serializeArray();
   var indexed_array = {};
 
-  $.map(unindexed_array, function(n, i){
-      indexed_array[n['name']] = n['value'];
+  $.map(unindexed_array, function (n, i) {
+    indexed_array[n['name']] = n['value'];
   });
 
   return indexed_array;
 }
 
 $(document).ready(function () {
-  $('.next-btn').on('click', function() {
-    console.log('next clicked');
+  $('.next-btn').on('click', function () {
     debugger;
     if ($(this).text() == 'שלח') {
-      console.log('need to send');
-      
-      console.log('submit cart form');
       var client_data = getFormData($('#cartform'));
       var products_data = JSON.parse(myStorage.getItem('products'));
       client_data['products'] = products_data
@@ -424,14 +471,11 @@ $(document).ready(function () {
         url: '/cart',
         type: 'POST',
         data: client_data,
-        success: function(json) {
+        success: function (json) {
           window.location.reload();
-          console.log(json);
         },
 
       })
-
-      console.log(client_data);
     }
   });
 
@@ -439,40 +483,46 @@ $(document).ready(function () {
   // init google map api
   var mapAutocomplete = new google.maps.places.Autocomplete(document.getElementById("addres_inp"));
   mapAutocomplete.setComponentRestrictions({
-      'country': ['il']
+    'country': ['il']
   });
   $('#exampleSlider').multislider({
-    interval:2,
-    duration:5000,
-    slideAll:true,
-    continuous:true,
-    hoverPause:true
+    interval: 2,
+    duration: 5000,
+    slideAll: true,
+    continuous: true,
+    hoverPause: true
   });
 
-  $('#exampleSlider .MS-content .item').hover(function() {
+  $('#exampleSlider .MS-content .item').hover(function () {
     $('#exampleSlider .MS-content').css('overflow', 'visible');
     $(this).css('z-index', '10');
-    
-  },function (){
+
+  }, function () {
     $('#exampleSlider .MS-content').css('overflow', 'hidden');
     $(this).css('z-index', '0');
   });
 
 
   // checkout form steps animation:
-  $('.next-btn').click(function() {
-    console.log('next click');
+  $('.next-btn').click(function () {
     $('.prev-btn').attr("disabled", false);
     $('.next-btn').text('שלח');
-    $('.modal-body-step-1').css({'display': 'none'});
-    $('.modal-body-step-2').css({'display': 'block'});
+    $('.modal-body-step-1').css({
+      'display': 'none'
+    });
+    $('.modal-body-step-2').css({
+      'display': 'block'
+    });
   });
-  $('.prev-btn').click(function() {
-    console.log('prev click');
+  $('.prev-btn').click(function () {
     $('.prev-btn').attr("disabled", true);
     $('.next-btn').text('הבא');
-    $('.modal-body-step-1').css({'display': 'block'});
-    $('.modal-body-step-2').css({'display': 'none'});
+    $('.modal-body-step-1').css({
+      'display': 'block'
+    });
+    $('.modal-body-step-2').css({
+      'display': 'none'
+    });
   });
 
   /*{
@@ -506,4 +556,42 @@ function closePopup(pop) {
 }*/
 
 /* Lettering.JS 0.6.1 by Dave Rupert  - http://daverupert.com */
-(function($){function injector(t,splitter,klass,after){var a=t.text().split(splitter),inject='';if(a.length){$(a).each(function(i,item){inject+='<span class="'+klass+(i+1)+'">'+item+'</span>'+after});t.empty().append(inject)}}var methods={init:function(){return this.each(function(){injector($(this),'','char','')})},words:function(){return this.each(function(){injector($(this),' ','word',' ')})},lines:function(){return this.each(function(){var r="eefec303079ad17405c889e092e105b0";injector($(this).children("br").replaceWith(r).end(),r,'line','')})}};$.fn.lettering=function(method){if(method&&methods[method]){return methods[method].apply(this,[].slice.call(arguments,1))}else if(method==='letters'||!method){return methods.init.apply(this,[].slice.call(arguments,0))}$.error('Method '+method+' does not exist on jQuery.lettering');return this}})(jQuery);
+(function ($) {
+  function injector(t, splitter, klass, after) {
+    var a = t.text().split(splitter),
+      inject = '';
+    if (a.length) {
+      $(a).each(function (i, item) {
+        inject += '<span class="' + klass + (i + 1) + '">' + item + '</span>' + after
+      });
+      t.empty().append(inject)
+    }
+  }
+  var methods = {
+    init: function () {
+      return this.each(function () {
+        injector($(this), '', 'char', '')
+      })
+    },
+    words: function () {
+      return this.each(function () {
+        injector($(this), ' ', 'word', ' ')
+      })
+    },
+    lines: function () {
+      return this.each(function () {
+        var r = "eefec303079ad17405c889e092e105b0";
+        injector($(this).children("br").replaceWith(r).end(), r, 'line', '')
+      })
+    }
+  };
+  $.fn.lettering = function (method) {
+    if (method && methods[method]) {
+      return methods[method].apply(this, [].slice.call(arguments, 1))
+    } else if (method === 'letters' || !method) {
+      return methods.init.apply(this, [].slice.call(arguments, 0))
+    }
+    $.error('Method ' + method + ' does not exist on jQuery.lettering');
+    return this
+  }
+})(jQuery);

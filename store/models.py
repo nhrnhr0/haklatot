@@ -47,3 +47,13 @@ class Order(models.Model):
     client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
     orderItems = models.ManyToManyField(to=OrderItems)
     date = models.DateField(auto_now=True)
+
+
+class Discount(models.Model):
+    name = models.CharField(max_length=200, verbose_name="discount name")
+    products = models.ManyToManyField(to=Product, through='DiscountProductLink')
+    price = models.IntegerField(default=0)
+class DiscountProductLink(models.Model):
+    product = models.ForeignKey(to=Product,on_delete=models.CASCADE)
+    discount = models.ForeignKey(to=Discount, on_delete=models.CASCADE, related_name='disdetalis')
+    amount = models.IntegerField(default=1)

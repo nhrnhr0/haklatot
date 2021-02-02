@@ -14,9 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+from store.serializers import DiscountSerializerViewSet,ProductSerializerViewSet, DiscountProductLinkSerializerViewSet
+router.register(r'discounts', DiscountSerializerViewSet)
+router.register(r'DiscountProductLinkSerializerViewSet', DiscountProductLinkSerializerViewSet)
+router.register(r'products', ProductSerializerViewSet)
 
 #from store import views
 from store.views import  home_view, contact_post, cart_form
@@ -24,7 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name="home"),
     path('contact-form', contact_post),
-    path('cart', cart_form)
+    path('cart', cart_form),
+    path('api/', include(router.urls))
 ]
 
 if settings.DEBUG:

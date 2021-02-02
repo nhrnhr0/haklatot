@@ -18,3 +18,13 @@ admin.site.register(Order, OrderAdmin)
 class OrderItemsAdmin(admin.ModelAdmin):
     list_display=('product', 'amount')
 admin.site.register(OrderItems, OrderItemsAdmin)
+
+from .models import DiscountProductLink
+class DiscountInline(admin.TabularInline):
+    model=DiscountProductLink
+from .models import Discount
+class DiscountAdmin(admin.ModelAdmin):
+    list_display=('name', 'price')
+    inlines = [DiscountInline,]
+admin.site.register(Discount, DiscountAdmin)
+
