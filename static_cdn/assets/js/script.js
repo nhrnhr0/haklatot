@@ -259,12 +259,7 @@ function getProductAmount(name) {
   return 0;
 }
 function applyDiscounts(discount, products) {
-  console.log('applyDiscounts');
-  console.log(discount);
   var cloneproducts = JSON.parse(JSON.stringify(products));
-
-  console.log(products);
-  debugger;
   for(var i = 0; i < discount.products.length; i++) {
     var currDisProduct = discount.products[i];
     var prodToRemove = cloneproducts.find((item)=>item.id == currDisProduct.product.id);
@@ -277,7 +272,7 @@ function applyDiscounts(discount, products) {
   }
   return cloneproducts;
 }
-function knapsack(products) {
+/*function knapsack(products) {
   discounts = getDiscounts();
     var found = false;
     results = [];
@@ -298,11 +293,38 @@ function knapsack(products) {
       return Math.max(...results);
     }
 
+}*/
+
+function sumProductPrices(products) {
+  var totalPrice = 0;
+  for (var i = 0; i < products.length; i++) {
+      totalPrice += getProductPrice(products[i].id) * products[i].amount;
+  }
+  return totalPrice;
+}
+
+function knapsack(products, discounts, appliedDiscounts) {
+  var bestPrice = sumProductPrices(products);
+  var bestDiscounts = appliedDiscounts;
+  console.log(bestPrice)
+  for (var i = 0; i < discounts.length; i++) {
+      newProducts = applyDiscounts(discounts[i], products);
+      if (newProducts == null) continue;
+      
+      const bestPriceAfterDiscount = knapsack(newProducts, discounts, appliedDiscounts.concat([discounts[i]]));
+      if(bestPrice > (bestPriceAfterDiscount[0] + discounts[i].price)) {
+        bestPrice = bestPriceAfterDiscount[0] + discounts[i].price;
+        bestDiscounts = bestPriceAfterDiscount[1];
+      }
+  }
+
+  return [bestPrice, bestDiscounts];
 }
 
 function calculateDiscounts(products, totalPrice) {
-  
-  knapsack(products);
+  const discounts = getDiscounts();
+  total = knapsack(products, discounts, []);
+  debugger;
 }
 
 function updateCartTotalPrice() {
@@ -440,7 +462,6 @@ function updateProductsCount() {
 }
 
 function getDiscounts() {
-  console.log('getDiscounts');
   const storeId = 'haklatotDiscounts'
   var discounts = sessionStorage.getItem(storeId);
   if (discounts)
@@ -450,7 +471,6 @@ function getDiscounts() {
       url: '/api/discounts',
       type: 'GET',
       success: function (json) {
-        console.log(json);
         sessionStorage.setItem(storeId, JSON.stringify(json));
       },
 
