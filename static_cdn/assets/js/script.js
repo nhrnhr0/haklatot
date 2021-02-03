@@ -75,7 +75,6 @@ $(document).ready(function () {
     $(".post-image").css("background-image", "url(" + item.dataset.image2 + ")");
     $(".post_content h1").text(item.dataset.title);
     $(".post_content p").text(item.dataset.description);
-    debugger;
     $(".post_content .product-size-lbl").html(`חבילה: ${item.dataset.size}`);
     openProductsModal();
     $('.grid-item').removeClass('active');
@@ -260,24 +259,45 @@ function getProductAmount(name) {
   return 0;
 }
 function applyDiscounts(discount, products) {
-  //TODO
+  console.log('applyDiscounts');
+  console.log(discount);
+  var cloneproducts = JSON.parse(JSON.stringify(products));
 
+  console.log(products);
+  debugger;
+  for(var i = 0; i < discount.products.length; i++) {
+    var currDisProduct = discount.products[i];
+    var prodToRemove = cloneproducts.find((item)=>item.id == currDisProduct.product.id);
+    
+    if(prodToRemove.amount >= currDisProduct.amount) {
+      prodToRemove.amount -= currDisProduct.amount;
+    }else{
+      return null;
+    }
+  }
+  return cloneproducts;
 }
 function knapsack(products) {
   discounts = getDiscounts();
-  debugger;
-  while(true) {
     var found = false;
+    results = [];
     for(var i = 0; i < discounts.length; i++) {
       newProducts = applyDiscounts(discounts[i], products);
       if(newProducts != null) {
-        var bestOption = max(knapsack(newProducts), knapsack(products));
-
-        return bestOption;
+        found = true;
+        //var bestOption = max(knapsack(newProducts), knapsack(products));
+        var res = knapsack(newProducts) + discounts[i].price ;
+        results.push(res);
       }
     }
 
-  }
+    if(found == false) {
+      return 0;
+    }
+    else {
+      return Math.max(...results);
+    }
+
 }
 
 function calculateDiscounts(products, totalPrice) {
@@ -292,7 +312,6 @@ function updateCartTotalPrice() {
     totalPrice += getProductPrice(products[i].id) * products[i].amount;
   }
   var cellLen = 10;
-  debugger;
   calculateDiscounts(products, totalPrice);
   deliveryConst = 30;
   if (totalPrice >= 100) {
@@ -461,7 +480,6 @@ function getFormData($form) {
 
 $(document).ready(function () {
   $('.next-btn').on('click', function () {
-    debugger;
     if ($(this).text() == 'שלח') {
       var client_data = getFormData($('#cartform'));
       var products_data = JSON.parse(myStorage.getItem('products'));
