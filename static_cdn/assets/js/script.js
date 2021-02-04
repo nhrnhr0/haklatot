@@ -526,7 +526,7 @@ function updateDiscountModal(discounts) {
       <td>${discounts[i].name} </td>
       <td>
       <button onclick="addDiscountToCart(this, ${discounts[i].id})" class="cart-button">
-                                            <span  class="add-to-cart">Add to cart</span>
+                                            <span  class="add-to-cart">הוסף לסל</span>
                                             <span class="added">Added</span>
                                             <i class="fa fa-shopping-cart">
                                             </i>
