@@ -258,6 +258,8 @@ function delete_product(id) {
 
 function getProductAmount(name) {
   products = JSON.parse(myStorage.getItem('products'));
+  if(porducts == null || products == undefined)
+    return 0;
   for (var i = 0; i < products.length; i++) {
     if (products[i].id == name)
       return products[i].amount;
