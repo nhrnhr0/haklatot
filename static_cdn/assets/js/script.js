@@ -236,6 +236,7 @@ function openCartModal() {
 }
 
 function delete_product(id) {
+  debugger;
   products = JSON.parse(myStorage.getItem('products'));
   for (var i = 0; i < products.length; i++) {
     if (parseInt(products[i].id) == id) {
@@ -263,7 +264,7 @@ function applyDiscounts(discount, products) {
   for(var i = 0; i < discount.products.length; i++) {
     var currDisProduct = discount.products[i];
     var prodToRemove = cloneproducts.find((item)=>item.id == currDisProduct.product.id);
-    
+    if(prodToRemove == undefined)  return null;
     if(prodToRemove.amount >= currDisProduct.amount) {
       prodToRemove.amount -= currDisProduct.amount;
     }else{
@@ -321,20 +322,51 @@ function knapsack(products, discounts, appliedDiscounts) {
   return [bestPrice, bestDiscounts];
 }
 
-function calculateDiscounts(products, totalPrice) {
-  const discounts = getDiscounts();
-  total = knapsack(products, discounts, []);
-  debugger;
+function calculateDiscounts(products, discounts) {
+  return knapsack(products, discounts, []);
 }
 
+function groupingDiscounts(discounts) {
+  var counts = {};
+  for(var i = 0; i < discounts.length; i++) {
+    counts[discounts[i].id] = 1 + (counts[discounts[i].id]|| 0);
+  }
+  return counts;
+}
+function generateDiscountsCartMarkup(groupDiscount, discounts) {
+  var markup = '';
+  for (const [key, value] of Object.entries(groupDiscount)) {
+    console.log(`${key}: ${value}`);
+    discount = discounts.find((item)=>item.id==key, groupDiscount);
+    markup +=
+      `<tr class="discount-item" name="discount-item-${key}">
+        <td colspan="3">
+          ${discount.name}
+        </td>
+        <td class="product-price-total">
+          x${value}
+        </td>
+        <td></td>
+      </tr>`
+  }
+  return markup;
+}
 function updateCartTotalPrice() {
   var products = JSON.parse(myStorage.getItem('products'));
-  totalPrice = 0;
+  discounts = getDiscounts();
+  /*totalPrice = 0;
   for (var i = 0; i < products.length; i++) {
     totalPrice += getProductPrice(products[i].id) * products[i].amount;
-  }
+  }*/
+  totalPrice = sumProductPrices(products);
   var cellLen = 10;
-  calculateDiscounts(products, totalPrice);
+  [totalPrice, applyedDiscounts] = calculateDiscounts(products, discounts);
+  groupDiscount = groupingDiscounts(applyedDiscounts);
+  discountMarkup = generateDiscountsCartMarkup(groupDiscount, discounts);
+  debugger;
+  var oldDiscounts = $('.discount-item');
+  oldDiscounts.remove();
+  $('.delivery-disclaimer-tr').before(discountMarkup);
   deliveryConst = 30;
   if (totalPrice >= 100) {
     deliveryConst = 0;

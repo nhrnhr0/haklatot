@@ -2445,6 +2445,7 @@ a:hover {
 .cart-table {
   width: 100%;
   font-size: 1.2em;
+  border-collapse: collapse;
   /*min-height: 450px;*/
 }
 
@@ -2456,6 +2457,7 @@ a:hover {
 
 .cart-table .cart-table-body {
   vertical-align: top;
+  border-bottom: 1px solid black;
 }
 
 @media only screen and (max-width: 600px) {
@@ -2525,16 +2527,20 @@ a:hover {
   min-width: 5em;
 }
 
+.cart-table tfoot .discount-item {
+  background: #7575754a;
+}
+
 .cart-table tfoot .delivery-cost {
   background: #33333345;
 }
 
-.cart-table tfoot .delivery-disclaimer {
+.cart-table tfoot .delivery-disclaimer-tr {
   font-size: 0.75em;
   background: #33333345;
 }
 
-.cart-table tfoot .delivery-disclaimer img.money-icon {
+.cart-table tfoot .delivery-disclaimer-tr img.money-icon {
   width: 10px;
   height: 10px;
 }

@@ -1484,6 +1484,7 @@ a:hover {
 .cart-table {
   width: 100%;
   font-size: 1.2em;
+  border-collapse: collapse;
   /*min-height: 450px;*/
   thead {
     background-color: #333;
@@ -1492,11 +1493,14 @@ a:hover {
   }
   .cart-table-body {
     vertical-align: top;
+    border-bottom: 1px solid black;
+
     @media only screen and (max-width: 600px) {
       span.minus, span.plus {
         display: none;
       }
     }
+
     .product-small-image {
       height: 50px;
       width: 50px;
@@ -1551,10 +1555,13 @@ a:hover {
   }
 
   tfoot {
+    .discount-item {
+      background: #7575754a;
+    }
     .delivery-cost {
       background: #33333345;
     }
-    .delivery-disclaimer {
+    .delivery-disclaimer-tr {
       font-size: 0.75em;
       background: #33333345;
       
