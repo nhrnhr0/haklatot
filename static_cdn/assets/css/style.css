@@ -2554,6 +2554,10 @@ a:hover {
   display: none;
 }
 
+#discount-modal-body .discounts-table {
+  direction: rtl;
+}
+
 #footer {
   background: #343b40;
   padding: 10px 0;

@@ -135,6 +135,7 @@ function closePopWithTimeout(index) {
 }
 // modal functionality
 const modal = document.querySelector('#my-modal');
+const discountModal = document.querySelector('#discount-modal');
 const productsModal = document.querySelector('#products-modal');
 const cartModal = document.querySelector('#cart-modal');
 const modalBtn = document.querySelector('#modal-btn');
@@ -144,7 +145,7 @@ const closeBtns = document.querySelectorAll('.close');
 
 // Events
 modalBtn.addEventListener('click', openModal);
-modalBtn2.addEventListener('click', openModal);
+modalBtn2.addEventListener('click', openDiscountModal);
 
 for (var i = 0; i < closeBtns.length; i++) {
   closeBtns[i].addEventListener('click', closeModal);
@@ -152,6 +153,11 @@ for (var i = 0; i < closeBtns.length; i++) {
 cartModalBtn.addEventListener('click', openCartModal);
 
 window.addEventListener('click', outsideClick);
+
+function openDiscountModal() {
+  closeModal();
+  discountModal.style.display = 'block';
+}
 
 // Open
 function openModal() {
@@ -236,7 +242,6 @@ function openCartModal() {
 }
 
 function delete_product(id) {
-  debugger;
   products = JSON.parse(myStorage.getItem('products'));
   for (var i = 0; i < products.length; i++) {
     if (parseInt(products[i].id) == id) {
@@ -363,7 +368,6 @@ function updateCartTotalPrice() {
   [totalPrice, applyedDiscounts] = calculateDiscounts(products, discounts);
   groupDiscount = groupingDiscounts(applyedDiscounts);
   discountMarkup = generateDiscountsCartMarkup(groupDiscount, discounts);
-  debugger;
   var oldDiscounts = $('.discount-item');
   oldDiscounts.remove();
   $('.delivery-disclaimer-tr').before(discountMarkup);
@@ -400,6 +404,7 @@ function closeModal() {
   modal.style.display = 'none';
   productsModal.style.display = 'none';
   cartModal.style.display = 'none';
+  discountModal.style.display = 'none';
 }
 
 // Close If Outside Click
@@ -493,17 +498,59 @@ function updateProductsCount() {
   }
 }
 
+function addDiscountToCart(btn, id) {
+  debugger;
+  discounts = getDiscounts();
+  disc = discounts.find((el)=>el.id == id);
+  for(var i = 0; i < disc.products.length; i++) {
+    addProductToCart(disc.products[i].product.id, getProductAmount(disc.products[i].product.id) + disc.products[i].amount);
+  }
+  let button = btn;
+  button.classList.add('clicked');
+  
+  setTimeout(() => {
+    button.classList.remove('clicked');
+    //var product = $('.grid-item.active');
+
+  }, 3000);
+}
+
+function updateDiscountModal(discounts) {
+  var modelBody = $('#discount-modal-body');
+  var markup = '<table class="discounts-table">';
+  for(var i = 0; i < discounts.length; i++) {
+    markup += `
+    <tr>
+      <td>${discounts[i].name} </td>
+      <td>
+      <button onclick="addDiscountToCart(this, ${discounts[i].id})" class="cart-button">
+                                            <span  class="add-to-cart">Add to cart</span>
+                                            <span class="added">Added</span>
+                                            <i class="fa fa-shopping-cart">
+                                            </i>
+                                            <i class="fas fa-box"></i>
+                                        </button>
+    </tr>
+    `
+  }
+  markup += '</table>'
+  modelBody.empty();
+  modelBody.append(markup);
+}
+
+var _discounts = null;
 function getDiscounts() {
-  const storeId = 'haklatotDiscounts'
-  var discounts = sessionStorage.getItem(storeId);
-  if (discounts)
-    return JSON.parse(discounts)
+  //const storeId = 'haklatotDiscounts'
+  //var discounts = sessionStorage.getItem(storeId);
+  if (_discounts != null)
+    return _discounts;
   else {
     $.ajax({
       url: '/api/discounts',
       type: 'GET',
       success: function (json) {
-        sessionStorage.setItem(storeId, JSON.stringify(json));
+        _discounts = json;
+        updateDiscountModal(_discounts);
       },
 
     })
