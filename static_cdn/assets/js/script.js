@@ -347,7 +347,8 @@ function generateDiscountsCartMarkup(groupDiscount, discounts) {
     discount = discounts.find((item)=>item.id==key, groupDiscount);
     markup +=
       `<tr class="discount-item" name="discount-item-${key}">
-        <td colspan="3">
+        <td><img class="discount-image" src="${discount.image}"/></td>
+        <td colspan="2">
           ${discount.name}
         </td>
         <td class="product-price-total">
@@ -523,11 +524,12 @@ function updateDiscountModal(discounts) {
   for(var i = 0; i < discounts.length; i++) {
     markup += `
     <tr>
+      <td><img class="discount-image" src="${discounts[i].image}"/></td>
       <td>${discounts[i].name} </td>
       <td>
       <button onclick="addDiscountToCart(this, ${discounts[i].id})" class="cart-button">
                                             <span  class="add-to-cart">הוסף לסל</span>
-                                            <span class="added">Added</span>
+                                            <span class="added">הוסף</span>
                                             <i class="fa fa-shopping-cart">
                                             </i>
                                             <i class="fas fa-box"></i>

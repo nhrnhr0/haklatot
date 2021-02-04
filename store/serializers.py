@@ -17,7 +17,7 @@ class DiscountSerializer(serializers.ModelSerializer):
     products = DiscountProductLinkSerializer(many=True,  source='disdetalis')
     class Meta:
         model = Discount
-        fields = ('id', 'name','price', 'products',)
+        fields = ('id', 'name','price', 'products','image')
 
 class DiscountSerializerViewSet(viewsets.ModelViewSet):
     queryset = Discount.objects.all()

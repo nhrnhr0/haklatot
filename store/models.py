@@ -50,6 +50,7 @@ class Order(models.Model):
 
 
 class Discount(models.Model):
+    image = models.ImageField(upload_to='discounts', null=True, blank=True)
     name = models.CharField(max_length=200, verbose_name="discount name")
     products = models.ManyToManyField(to=Product, through='DiscountProductLink')
     price = models.IntegerField(default=0)

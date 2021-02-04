@@ -2531,6 +2531,11 @@ a:hover {
   background: #7575754a;
 }
 
+.cart-table tfoot .discount-item .discount-image {
+  width: 50px;
+  height: 50px;
+}
+
 .cart-table tfoot .delivery-cost {
   background: #33333345;
 }
@@ -2556,6 +2561,11 @@ a:hover {
 
 #discount-modal-body .discounts-table {
   direction: rtl;
+}
+
+#discount-modal-body .discount-image {
+  height: 50px;
+  width: 50px;
 }
 
 #footer {
